@@ -1,0 +1,1 @@
+{"verdict": "discard", "confidence": 0.0, "summary": "OOM issues and poor metric status.", "risks": ["Out of memory issues"], "checks": {"metric_status_ok": false, "training_completed": true, "memory_within_bounds": false, "regression_risk": "high"}}

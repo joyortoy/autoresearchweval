@@ -1,0 +1,295 @@
+{
+  "timestamp": "20260408_020304",
+  "model_uri": "ollama:qwen3-embedding:0.6b",
+  "model_name": "qwen3-embedding:0.6b",
+  "quantizer": "dim",
+  "clip_percentile": 1.0,
+  "ollama_host": "http://127.0.0.1:11434",
+  "corpus": "/home/sam/memory/intentstack-memory-backfill",
+  "collection": "intent-memory",
+  "cases_path": "/home/sam/projects/autoresearch/logs/turboquant_cases_20260408_020304.json",
+  "corpus_docs": 350,
+  "query_count": 20,
+  "embed_seconds": 0.0,
+  "cache_hit": true,
+  "baseline": {
+    "name": "baseline",
+    "recall_at_10": 0.95,
+    "ndcg_at_10": 0.6977839381760635,
+    "p95_latency_ms": 0.027111610397696495,
+    "mean_latency_ms": 0.020261849931557663,
+    "index_bytes": 1433600.0,
+    "index_mb": 1.3671875,
+    "memory_ratio": 1.0,
+    "avg_query_bytes": 0.0,
+    "categories": {
+      "default_command": {
+        "recall_at_10": 0.8,
+        "ndcg_at_10": 0.452371901428583,
+        "queries": 5.0
+      },
+      "failure_handling": {
+        "recall_at_10": 1.0,
+        "ndcg_at_10": 0.8252574989159953,
+        "queries": 4.0
+      },
+      "model_setting": {
+        "recall_at_10": 1.0,
+        "ndcg_at_10": 0.5872865023809717,
+        "queries": 3.0
+      },
+      "status_style": {
+        "recall_at_10": 1.0,
+        "ndcg_at_10": 0.6577324383928644,
+        "queries": 4.0
+      },
+      "update_style": {
+        "recall_at_10": 1.0,
+        "ndcg_at_10": 1.0,
+        "queries": 4.0
+      }
+    }
+  },
+  "results": [
+    {
+      "name": "dim_corpus_4bit",
+      "recall_at_10": 0.95,
+      "ndcg_at_10": 0.6615986575892967,
+      "p95_latency_ms": 0.052343785762786865,
+      "mean_latency_ms": 0.039350250335701276,
+      "index_bytes": 188792.0,
+      "index_mb": 0.18004608154296875,
+      "memory_ratio": 7.5935420992414935,
+      "avg_query_bytes": 0.0,
+      "categories": {
+        "default_command": {
+          "recall_at_10": 0.8,
+          "ndcg_at_10": 0.452371901428583,
+          "queries": 5.0
+        },
+        "failure_handling": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.644331095982161,
+          "queries": 4.0
+        },
+        "model_setting": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.5872865023809717,
+          "queries": 3.0
+        },
+        "status_style": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.75,
+          "queries": 4.0
+        },
+        "update_style": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.9077324383928644,
+          "queries": 4.0
+        }
+      },
+      "decision": "reject",
+      "note": "quality drop exceeds guardrail"
+    },
+    {
+      "name": "dim_corpus_3.5bit",
+      "recall_at_10": 0.95,
+      "ndcg_at_10": 0.6550521699107238,
+      "p95_latency_ms": 0.06533950567245483,
+      "mean_latency_ms": 0.047315550182247534,
+      "index_bytes": 174712.0,
+      "index_mb": 0.16661834716796875,
+      "memory_ratio": 8.205503915014424,
+      "avg_query_bytes": 0.0,
+      "categories": {
+        "default_command": {
+          "recall_at_10": 0.8,
+          "ndcg_at_10": 0.4785578521428745,
+          "queries": 5.0
+        },
+        "failure_handling": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.7038662191964322,
+          "queries": 4.0
+        },
+        "model_setting": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.5872865023809717,
+          "queries": 3.0
+        },
+        "status_style": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.625,
+          "queries": 4.0
+        },
+        "update_style": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.9077324383928644,
+          "queries": 4.0
+        }
+      },
+      "decision": "reject",
+      "note": "quality drop exceeds guardrail"
+    },
+    {
+      "name": "dim_corpus_3bit",
+      "recall_at_10": 0.95,
+      "ndcg_at_10": 0.6139821033974457,
+      "p95_latency_ms": 0.04157219082117081,
+      "mean_latency_ms": 0.0380410496291006,
+      "index_bytes": 143992.0,
+      "index_mb": 0.13732147216796875,
+      "memory_ratio": 9.956108672704039,
+      "avg_query_bytes": 0.0,
+      "categories": {
+        "default_command": {
+          "recall_at_10": 0.8,
+          "ndcg_at_10": 0.42618595071429155,
+          "queries": 5.0
+        },
+        "failure_handling": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.5967132018086354,
+          "queries": 4.0
+        },
+        "model_setting": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.5436432511904858,
+          "queries": 3.0
+        },
+        "status_style": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.625,
+          "queries": 4.0
+        },
+        "update_style": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.9077324383928644,
+          "queries": 4.0
+        }
+      },
+      "decision": "reject",
+      "note": "quality drop exceeds guardrail"
+    },
+    {
+      "name": "dim_corpus_7bit",
+      "recall_at_10": 0.95,
+      "ndcg_at_10": 0.6727839381760635,
+      "p95_latency_ms": 0.04692957177758217,
+      "mean_latency_ms": 0.04008960004284745,
+      "index_bytes": 323192.0,
+      "index_mb": 0.30821990966796875,
+      "memory_ratio": 4.435753360231689,
+      "avg_query_bytes": 0.0,
+      "categories": {
+        "default_command": {
+          "recall_at_10": 0.8,
+          "ndcg_at_10": 0.452371901428583,
+          "queries": 5.0
+        },
+        "failure_handling": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.8252574989159953,
+          "queries": 4.0
+        },
+        "model_setting": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.5872865023809717,
+          "queries": 3.0
+        },
+        "status_style": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.625,
+          "queries": 4.0
+        },
+        "update_style": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.9077324383928644,
+          "queries": 4.0
+        }
+      },
+      "decision": "reject",
+      "note": "quality drop exceeds guardrail"
+    },
+    {
+      "name": "dim_corpus_6bit",
+      "recall_at_10": 0.95,
+      "ndcg_at_10": 0.6727839381760635,
+      "p95_latency_ms": 0.04125484079122543,
+      "mean_latency_ms": 0.03870590007863939,
+      "index_bytes": 278392.0,
+      "index_mb": 0.26549530029296875,
+      "memory_ratio": 5.149573263599529,
+      "avg_query_bytes": 0.0,
+      "categories": {
+        "default_command": {
+          "recall_at_10": 0.8,
+          "ndcg_at_10": 0.42618595071429155,
+          "queries": 5.0
+        },
+        "failure_handling": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.7329899373088598,
+          "queries": 4.0
+        },
+        "model_setting": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.5872865023809717,
+          "queries": 3.0
+        },
+        "status_style": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.6577324383928644,
+          "queries": 4.0
+        },
+        "update_style": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 1.0,
+          "queries": 4.0
+        }
+      },
+      "decision": "reject",
+      "note": "quality drop exceeds guardrail"
+    },
+    {
+      "name": "dim_corpus_5bit",
+      "recall_at_10": 0.95,
+      "ndcg_at_10": 0.6812381206250153,
+      "p95_latency_ms": 0.05420459434390068,
+      "mean_latency_ms": 0.04160409953328781,
+      "index_bytes": 233592.0,
+      "index_mb": 0.22277069091796875,
+      "memory_ratio": 6.137196479331484,
+      "avg_query_bytes": 0.0,
+      "categories": {
+        "default_command": {
+          "recall_at_10": 0.8,
+          "ndcg_at_10": 0.504743802857166,
+          "queries": 5.0
+        },
+        "failure_handling": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.8288662191964322,
+          "queries": 4.0
+        },
+        "model_setting": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.5872865023809717,
+          "queries": 3.0
+        },
+        "status_style": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.6904648767857288,
+          "queries": 4.0
+        },
+        "update_style": {
+          "recall_at_10": 1.0,
+          "ndcg_at_10": 0.8154648767857289,
+          "queries": 4.0
+        }
+      },
+      "decision": "reject",
+      "note": "quality drop exceeds guardrail"
+    }
+  ]
+}

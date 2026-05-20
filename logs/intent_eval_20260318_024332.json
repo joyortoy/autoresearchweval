@@ -1,0 +1,182 @@
+{
+  "timestamp": "20260318_024332",
+  "base_url": "http://127.0.0.1:8090",
+  "eval_file": "/home/sam/memory/intentstack/intent_eval_set.jsonl",
+  "total": 7,
+  "correct": 6,
+  "accuracy": 0.8571,
+  "results": [
+    {
+      "index": 1,
+      "conv_id": "intent-eval-20260318_024332-1",
+      "prompt": "hello",
+      "expected_intent": "general_chat",
+      "predicted_intent": "general_chat",
+      "confidence": 0.99,
+      "memory_written": false,
+      "slots": {},
+      "correct": true,
+      "note": "basic greeting",
+      "assistant_text": "Hi. I am online and ready. What do you want to work on?",
+      "raw": {
+        "conv_id": "intent-eval-20260318_024332-1",
+        "intent": "general_chat",
+        "confidence": 0.99,
+        "slots": {},
+        "memory_written": false,
+        "assistant_text": "Hi. I am online and ready. What do you want to work on?",
+        "tool_route": null,
+        "skill_name": "chat_reply",
+        "skill_payload": null
+      }
+    },
+    {
+      "index": 2,
+      "conv_id": "intent-eval-20260318_024332-2",
+      "prompt": "Please help me with docker setup",
+      "expected_intent": "tech_support",
+      "predicted_intent": "task_request",
+      "confidence": 0.9,
+      "memory_written": false,
+      "slots": {},
+      "correct": false,
+      "note": "technical assistance",
+      "assistant_text": "Sure! Setting up Docker can be straightforward. Below are the steps to get you started:\n\n### Step 1: Install Docker\n\n#### On Ubuntu:\n1. **Update your package list**:\n   ```sh\n   sudo apt-get update\n   ```\n\n2. **Install required packages**:\n   ```sh\n   sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common\n   ```\n\n3. **Add Docker’s official GPG key**:\n   ```sh\n   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg\n   ```\n\n4. **Set up the stable repository**:\n   ```sh\n   echo \"deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null\n   ```\n\n5. **Update the apt package index and install Docker**:\n   ```sh\n   sudo apt-get update\n   sudo apt-get install -y docker-ce docker-ce-cli containerd.io\n   ```\n\n6. **Verify that Docker is installed correctly**:\n   ```sh\n   sudo docker --version\n   ```\n\n#### On macOS or Windows (using Docker Desktop):\n1. **Download and install Docker Desktop**: \n   - Go to the official [Docker website](https://www.docker.com/products/docker-desktop) and download the appropriate version for your system.\n   - Follow the installation instructions provided.\n\n2. **Start Docker Desktop**:\n   - Open Docker Desktop from the Applications folder on macOS or the Start menu on Windows.\n   - Ensure that \"Use the recommended Hyper-V settings\" is checked (for Windows).\n   - Click \"Trust this app\" if prompted to trust the downloaded application.\n\n3. **Verify installation**:\n   - Once installed, open a terminal and run:\n     ```sh\n     docker --version\n     ```\n\n### Step 2: Set Up Docker Compose (Optional but Recommended)\n\nDocker Compose simplifies the management of multi-container Docker applications. Here’s how to install it:\n\n1. **Add Docker Compose to your PATH**:\n   - On Ubuntu, you can install Docker Compose using:\n     ```sh\n     sudo curl -L \"https://github.com/docker/compose/releases/download/$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep tag_name | cut -d '\"' -f 4)/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose\n     ```\n   - Grant it execute permission:\n     ```sh\n     sudo chmod +x /usr/local/bin/docker-compose\n     ```\n\n2. **Verify Docker Compose installation**:\n   ```sh\n   docker-compose --version\n   ```\n\n### Step 3: Get Started with Docker\n\n1. **Run a simple container to test your setup**:\n   ```sh\n   sudo docker run hello-world\n   ```\n\n2. **Pull an image and run a container from it** (e.g., Nginx):\n   ```sh\n   sudo docker pull nginx\n   sudo docker run -d --name my-nginx -p 80:80 nginx\n   ```\n   This command will start an Nginx server in the background. You can check its status with:\n   ```sh\n   sudo docker ps\n   ```\n\n3. **Access your running container** (if you want to inspect it):\n   ```sh\n   sudo docker exec -it my-nginx /bin/bash\n   ```\n\n### Step 4: Explore More\n\nDocker and Docker Compose have extensive documentation available online. You can find more examples, tutorials, and best practices in their official [Docker Documentation](https://docs.docker.com/) and [Docker Compose Documentation](https://docs.docker.com/compose/).\n\nIf you run into any issues or need further assistance, feel free to ask!",
+      "raw": {
+        "conv_id": "intent-eval-20260318_024332-2",
+        "intent": "task_request",
+        "confidence": 0.9,
+        "slots": {},
+        "memory_written": false,
+        "assistant_text": "Sure! Setting up Docker can be straightforward. Below are the steps to get you started:\n\n### Step 1: Install Docker\n\n#### On Ubuntu:\n1. **Update your package list**:\n   ```sh\n   sudo apt-get update\n   ```\n\n2. **Install required packages**:\n   ```sh\n   sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common\n   ```\n\n3. **Add Docker’s official GPG key**:\n   ```sh\n   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg\n   ```\n\n4. **Set up the stable repository**:\n   ```sh\n   echo \"deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null\n   ```\n\n5. **Update the apt package index and install Docker**:\n   ```sh\n   sudo apt-get update\n   sudo apt-get install -y docker-ce docker-ce-cli containerd.io\n   ```\n\n6. **Verify that Docker is installed correctly**:\n   ```sh\n   sudo docker --version\n   ```\n\n#### On macOS or Windows (using Docker Desktop):\n1. **Download and install Docker Desktop**: \n   - Go to the official [Docker website](https://www.docker.com/products/docker-desktop) and download the appropriate version for your system.\n   - Follow the installation instructions provided.\n\n2. **Start Docker Desktop**:\n   - Open Docker Desktop from the Applications folder on macOS or the Start menu on Windows.\n   - Ensure that \"Use the recommended Hyper-V settings\" is checked (for Windows).\n   - Click \"Trust this app\" if prompted to trust the downloaded application.\n\n3. **Verify installation**:\n   - Once installed, open a terminal and run:\n     ```sh\n     docker --version\n     ```\n\n### Step 2: Set Up Docker Compose (Optional but Recommended)\n\nDocker Compose simplifies the management of multi-container Docker applications. Here’s how to install it:\n\n1. **Add Docker Compose to your PATH**:\n   - On Ubuntu, you can install Docker Compose using:\n     ```sh\n     sudo curl -L \"https://github.com/docker/compose/releases/download/$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep tag_name | cut -d '\"' -f 4)/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose\n     ```\n   - Grant it execute permission:\n     ```sh\n     sudo chmod +x /usr/local/bin/docker-compose\n     ```\n\n2. **Verify Docker Compose installation**:\n   ```sh\n   docker-compose --version\n   ```\n\n### Step 3: Get Started with Docker\n\n1. **Run a simple container to test your setup**:\n   ```sh\n   sudo docker run hello-world\n   ```\n\n2. **Pull an image and run a container from it** (e.g., Nginx):\n   ```sh\n   sudo docker pull nginx\n   sudo docker run -d --name my-nginx -p 80:80 nginx\n   ```\n   This command will start an Nginx server in the background. You can check its status with:\n   ```sh\n   sudo docker ps\n   ```\n\n3. **Access your running container** (if you want to inspect it):\n   ```sh\n   sudo docker exec -it my-nginx /bin/bash\n   ```\n\n### Step 4: Explore More\n\nDocker and Docker Compose have extensive documentation available online. You can find more examples, tutorials, and best practices in their official [Docker Documentation](https://docs.docker.com/) and [Docker Compose Documentation](https://docs.docker.com/compose/).\n\nIf you run into any issues or need further assistance, feel free to ask!",
+        "tool_route": null,
+        "skill_name": "chat_reply",
+        "skill_payload": null
+      }
+    },
+    {
+      "index": 3,
+      "conv_id": "intent-eval-20260318_024332-3",
+      "prompt": "Write a Python script that summarizes the request logs",
+      "expected_intent": "task_request",
+      "predicted_intent": "task_request",
+      "confidence": 0.9,
+      "memory_written": false,
+      "slots": {
+        "topic": "Python script"
+      },
+      "correct": true,
+      "note": "direct build task",
+      "assistant_text": "I can’t verify key parts of that response from the available context, so I won’t present it as fact. If you provide sources or more details, I can proceed safely.",
+      "raw": {
+        "conv_id": "intent-eval-20260318_024332-3",
+        "intent": "task_request",
+        "confidence": 0.9,
+        "slots": {
+          "topic": "Python script"
+        },
+        "memory_written": false,
+        "assistant_text": "I can’t verify key parts of that response from the available context, so I won’t present it as fact. If you provide sources or more details, I can proceed safely.",
+        "tool_route": null,
+        "skill_name": "chat_reply",
+        "skill_payload": null
+      }
+    },
+    {
+      "index": 4,
+      "conv_id": "intent-eval-20260318_024332-4",
+      "prompt": "Plan a migration from sqlite to postgres for this service",
+      "expected_intent": "plan_project",
+      "predicted_intent": "plan_project",
+      "confidence": 0.95,
+      "memory_written": false,
+      "slots": {},
+      "correct": true,
+      "note": "project planning",
+      "assistant_text": "To migrate your service from SQLite to PostgreSQL, follow these steps:\n\n### Step 1: Prepare Your Environment\n\n1. **Install PostgreSQL**:\n   - On Ubuntu/Debian: `sudo apt-get install postgresql`\n   - On CentOS/RHEL: `sudo yum install postgresql-server`\n   - On macOS (using Homebrew): `brew install postgresql`\n\n2. **Create a PostgreSQL User and Database**:\n   ```bash\n   sudo -u postgres psql\n   CREATE DATABASE your_database_name;\n   \\q\n   ```\n\n3. **Install the PostgreSQL Python Library**:\n   ```bash\n   pip install psycopg2-binary\n   ```\n\n### Step 2: Backup Your SQLite Data\n\n1. Export data from SQLite to a SQL dump file.\n   ```bash\n   sqlite3 old_db.sqlite \".backup new_backup.db\"\n   ```\n\n2. Alternatively, you can use `sqlite3` to export directly into a SQL script:\n   ```bash\n   sqlite3 -separator , old_db.sqlite .mode csv \"SELECT * FROM your_table\" > data.csv\n   ```\n\n### Step 3: Migrate Data\n\n1. **Convert CSV to Insert Statements** (if you exported the data in CSV format):\n   You can use a script like this:\n   ```python\n   import csv\n\n   with open('data.csv', 'r') as f:\n       reader = csv.reader(f)\n       next(reader)  # Skip header row\n       for row in reader:\n           print(f\"INSERT INTO your_table (column1, column2, ...) VALUES ({', '.join(['%s'] * len(row))});\")\n   ```\n\n2. **Import Data into PostgreSQL**:\n   Use the generated SQL insert statements to import data into PostgreSQL.\n   ```bash\n   psql -d your_database_name -f path_to_sql_file.sql\n   ```\n\n### Step 4: Update Your Application Code\n\n1. **Install psycopg2**: If not already done, install it via pip as mentioned earlier.\n\n2. **Update Database Configuration**:\n   Modify your application's configuration to use PostgreSQL instead of SQLite.\n   ```python\n   DATABASES = {\n       'default': {\n           'ENGINE': 'django.db.backends.postgresql',\n           'NAME': 'your_database_name',\n           'USER': 'your_postgres_user',\n           'PASSWORD': 'your_postgres_password',\n           'HOST': 'localhost',  # or your host\n           'PORT': '',            # or your port number\n       }\n   }\n   ```\n\n3. **Test the Application**:\n   - Ensure all queries work as expected.\n   - Check for any schema differences and adjust accordingly.\n\n### Step 5: Verify the Migration\n\n1. **Run Tests**: Execute unit tests to ensure everything works correctly with PostgreSQL.\n\n2. **Monitor Performance**: Keep an eye on query performance and optimize if necessary.\n\n3. **Document Changes**: Update your documentation or README to reflect the database change.\n\nBy following these steps, you can migrate your service from SQLite to PostgreSQL in a structured manner. If you encounter any issues, refer to official documentation for both SQLite and PostgreSQL.",
+      "raw": {
+        "conv_id": "intent-eval-20260318_024332-4",
+        "intent": "plan_project",
+        "confidence": 0.95,
+        "slots": {},
+        "memory_written": false,
+        "assistant_text": "To migrate your service from SQLite to PostgreSQL, follow these steps:\n\n### Step 1: Prepare Your Environment\n\n1. **Install PostgreSQL**:\n   - On Ubuntu/Debian: `sudo apt-get install postgresql`\n   - On CentOS/RHEL: `sudo yum install postgresql-server`\n   - On macOS (using Homebrew): `brew install postgresql`\n\n2. **Create a PostgreSQL User and Database**:\n   ```bash\n   sudo -u postgres psql\n   CREATE DATABASE your_database_name;\n   \\q\n   ```\n\n3. **Install the PostgreSQL Python Library**:\n   ```bash\n   pip install psycopg2-binary\n   ```\n\n### Step 2: Backup Your SQLite Data\n\n1. Export data from SQLite to a SQL dump file.\n   ```bash\n   sqlite3 old_db.sqlite \".backup new_backup.db\"\n   ```\n\n2. Alternatively, you can use `sqlite3` to export directly into a SQL script:\n   ```bash\n   sqlite3 -separator , old_db.sqlite .mode csv \"SELECT * FROM your_table\" > data.csv\n   ```\n\n### Step 3: Migrate Data\n\n1. **Convert CSV to Insert Statements** (if you exported the data in CSV format):\n   You can use a script like this:\n   ```python\n   import csv\n\n   with open('data.csv', 'r') as f:\n       reader = csv.reader(f)\n       next(reader)  # Skip header row\n       for row in reader:\n           print(f\"INSERT INTO your_table (column1, column2, ...) VALUES ({', '.join(['%s'] * len(row))});\")\n   ```\n\n2. **Import Data into PostgreSQL**:\n   Use the generated SQL insert statements to import data into PostgreSQL.\n   ```bash\n   psql -d your_database_name -f path_to_sql_file.sql\n   ```\n\n### Step 4: Update Your Application Code\n\n1. **Install psycopg2**: If not already done, install it via pip as mentioned earlier.\n\n2. **Update Database Configuration**:\n   Modify your application's configuration to use PostgreSQL instead of SQLite.\n   ```python\n   DATABASES = {\n       'default': {\n           'ENGINE': 'django.db.backends.postgresql',\n           'NAME': 'your_database_name',\n           'USER': 'your_postgres_user',\n           'PASSWORD': 'your_postgres_password',\n           'HOST': 'localhost',  # or your host\n           'PORT': '',            # or your port number\n       }\n   }\n   ```\n\n3. **Test the Application**:\n   - Ensure all queries work as expected.\n   - Check for any schema differences and adjust accordingly.\n\n### Step 5: Verify the Migration\n\n1. **Run Tests**: Execute unit tests to ensure everything works correctly with PostgreSQL.\n\n2. **Monitor Performance**: Keep an eye on query performance and optimize if necessary.\n\n3. **Document Changes**: Update your documentation or README to reflect the database change.\n\nBy following these steps, you can migrate your service from SQLite to PostgreSQL in a structured manner. If you encounter any issues, refer to official documentation for both SQLite and PostgreSQL.",
+        "tool_route": null,
+        "skill_name": "chat_reply",
+        "skill_payload": null
+      }
+    },
+    {
+      "index": 5,
+      "conv_id": "intent-eval-20260318_024332-5",
+      "prompt": "remember",
+      "expected_intent": "log_memory",
+      "predicted_intent": "log_memory",
+      "confidence": 0.95,
+      "memory_written": false,
+      "slots": {},
+      "correct": true,
+      "note": "exact memory trigger",
+      "assistant_text": "I can’t verify key parts of that response from the available context, so I won’t present it as fact. If you provide sources or more details, I can proceed safely.",
+      "raw": {
+        "conv_id": "intent-eval-20260318_024332-5",
+        "intent": "log_memory",
+        "confidence": 0.95,
+        "slots": {},
+        "memory_written": false,
+        "assistant_text": "I can’t verify key parts of that response from the available context, so I won’t present it as fact. If you provide sources or more details, I can proceed safely.",
+        "tool_route": null,
+        "skill_name": "memory_write",
+        "skill_payload": null
+      }
+    },
+    {
+      "index": 6,
+      "conv_id": "intent-eval-20260318_024332-6",
+      "prompt": "What do you remember about this conversation?",
+      "expected_intent": "retrieve_memory",
+      "predicted_intent": "retrieve_memory",
+      "confidence": 0.9,
+      "memory_written": false,
+      "slots": {},
+      "correct": true,
+      "note": "memory read",
+      "assistant_text": "I can’t verify key parts of that response from the available context, so I won’t present it as fact. If you provide sources or more details, I can proceed safely.",
+      "raw": {
+        "conv_id": "intent-eval-20260318_024332-6",
+        "intent": "retrieve_memory",
+        "confidence": 0.9,
+        "slots": {},
+        "memory_written": false,
+        "assistant_text": "I can’t verify key parts of that response from the available context, so I won’t present it as fact. If you provide sources or more details, I can proceed safely.",
+        "tool_route": null,
+        "skill_name": "memory_read",
+        "skill_payload": null
+      }
+    },
+    {
+      "index": 7,
+      "conv_id": "intent-eval-20260318_024332-7",
+      "prompt": "Train the intent router using these corrected examples",
+      "expected_intent": "train_intent",
+      "predicted_intent": "train_intent",
+      "confidence": 0.95,
+      "memory_written": false,
+      "slots": {},
+      "correct": true,
+      "note": "intent training request",
+      "assistant_text": "Sure, to effectively train the intent router with your corrected examples, we need to follow a structured approach. Here’s how you can do it:\n\n### Step 1: Prepare Your Examples\nEnsure that each example has clear labels corresponding to its intent. For instance:\n- \"Can you set an alarm for 6 AM?\" - Intent: `set_alarm`\n- \"What is the weather like today?\" - Intent: `check_weather`\n\n### Step 2: Organize Data in a Structured Format\nOrganize your data into a format that can be easily consumed by your training tool. Here’s a simple example using JSON:\n\n```json\n[\n    {\n        \"text\": \"Can you set an alarm for 6 AM?\",\n        \"intent\": \"set_alarm\"\n    },\n    {\n        \"text\": \"What is the weather like today?\",\n        \"intent\": \"check_weather\"\n    }\n]\n```\n\n### Step 3: Choose a Training Tool\nDepending on your setup, choose a suitable tool. For instance, if you're using Rasa (a popular NLP framework), you would use its training capabilities.\n\n#### Example with Rasa:\n1. **Create an `intents.yml` file**:\n\n    ```yaml\n    intents:\n      - set_alarm\n      - check_weather\n    ```\n\n2. **Add stories for context if necessary**:\n\n    ```yaml\n    stories:\n      - story: Greeting the user and asking about weather\n        steps:\n          - intent: check_weather\n            action: utter_current_weather\n    ```\n\n3. **Train the model using Rasa CLI**:\n\n    ```bash\n    rasa train\n    ```\n\n### Step 4: Validate Intent Routing\nAfter training, validate that your intent router correctly classifies new inputs.\n\n#### Example with Rasa:\n1. **Test the intent classification**:\n\n    ```bash\n    rasa shell\n    ```\n   \n2. **Input test sentences and observe intents**:\n\n    ```\n    > Can you set an alarm for 6 AM?\n    Intent: set_alarm\n\n    > What is the weather like today?\n    Intent: check_weather\n    ```\n\n### Step 5: Adjust Based on Feedback\nIf there are misclassifications, go back to your data and make adjustments by adding more examples or refining existing ones.\n\n### Step 6: Deploy and Monitor\nOnce you’re satisfied with the performance, deploy your model. Continuously monitor its performance and update as necessary.\n\nThis approach should help you train an effective intent router for your application. Let me know if you need further assistance!",
+      "raw": {
+        "conv_id": "intent-eval-20260318_024332-7",
+        "intent": "train_intent",
+        "confidence": 0.95,
+        "slots": {},
+        "memory_written": false,
+        "assistant_text": "Sure, to effectively train the intent router with your corrected examples, we need to follow a structured approach. Here’s how you can do it:\n\n### Step 1: Prepare Your Examples\nEnsure that each example has clear labels corresponding to its intent. For instance:\n- \"Can you set an alarm for 6 AM?\" - Intent: `set_alarm`\n- \"What is the weather like today?\" - Intent: `check_weather`\n\n### Step 2: Organize Data in a Structured Format\nOrganize your data into a format that can be easily consumed by your training tool. Here’s a simple example using JSON:\n\n```json\n[\n    {\n        \"text\": \"Can you set an alarm for 6 AM?\",\n        \"intent\": \"set_alarm\"\n    },\n    {\n        \"text\": \"What is the weather like today?\",\n        \"intent\": \"check_weather\"\n    }\n]\n```\n\n### Step 3: Choose a Training Tool\nDepending on your setup, choose a suitable tool. For instance, if you're using Rasa (a popular NLP framework), you would use its training capabilities.\n\n#### Example with Rasa:\n1. **Create an `intents.yml` file**:\n\n    ```yaml\n    intents:\n      - set_alarm\n      - check_weather\n    ```\n\n2. **Add stories for context if necessary**:\n\n    ```yaml\n    stories:\n      - story: Greeting the user and asking about weather\n        steps:\n          - intent: check_weather\n            action: utter_current_weather\n    ```\n\n3. **Train the model using Rasa CLI**:\n\n    ```bash\n    rasa train\n    ```\n\n### Step 4: Validate Intent Routing\nAfter training, validate that your intent router correctly classifies new inputs.\n\n#### Example with Rasa:\n1. **Test the intent classification**:\n\n    ```bash\n    rasa shell\n    ```\n   \n2. **Input test sentences and observe intents**:\n\n    ```\n    > Can you set an alarm for 6 AM?\n    Intent: set_alarm\n\n    > What is the weather like today?\n    Intent: check_weather\n    ```\n\n### Step 5: Adjust Based on Feedback\nIf there are misclassifications, go back to your data and make adjustments by adding more examples or refining existing ones.\n\n### Step 6: Deploy and Monitor\nOnce you’re satisfied with the performance, deploy your model. Continuously monitor its performance and update as necessary.\n\nThis approach should help you train an effective intent router for your application. Let me know if you need further assistance!",
+        "tool_route": null,
+        "skill_name": "chat_reply",
+        "skill_payload": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+Vocab size: 8,192
+Model config: {'sequence_len': 2048, 'vocab_size': 8192, 'n_layer': 10, 'n_head': 5, 'n_kv_head': 5, 'n_embd': 480, 'window_pattern': 'SSSL'}
+Parameter counts:
+  wte                     : 3,932,160
+  value_embeds            : 19,660,800
+  lm_head                 : 3,932,160
+  transformer_matrices    : 27,648,800
+  scalars                 : 20
+  total                   : 55,173,940
+Estimated FLOPs per token: 2.661629e+08
+Scaling AdamW LRs by 1/sqrt(480/768) = 1.264911
+Time budget: 300s
+Gradient accumulation steps: 16

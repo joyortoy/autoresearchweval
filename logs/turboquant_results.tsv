@@ -1,0 +1,38 @@
+timestamp	model	config	bits	corpus_compressed	query_compressed	recall_at_10	ndcg_at_10	p95_latency_ms	mean_latency_ms	index_mb	memory_ratio	avg_query_bytes	decision	note
+20260408_013313	qwen3-embedding:0.6b	baseline	32.0	0	0	0.9500	0.6978	0.060	0.047	1.367188	1.0000	0.00	baseline	baseline fixed
+20260408_013313	qwen3-embedding:0.6b	corpus_4bit	4.0	1	0	0.9500	0.6655	0.037	0.035	0.172234	7.9380	0.00	reject	quality drop exceeds guardrail
+20260408_013313	qwen3-embedding:0.6b	corpus_3.5bit	3.5	1	0	0.9500	0.6524	0.050	0.040	0.152328	8.9753	0.00	reject	quality drop exceeds guardrail
+20260408_013313	qwen3-embedding:0.6b	corpus_3bit	3.0	1	0	0.9000	0.6771	0.039	0.038	0.129509	10.5567	0.00	reject	quality drop exceeds guardrail
+20260408_015004	qwen3-embedding:0.6b	baseline	32.0	0	0	0.9500	0.6978	0.029	0.020	1.367188	1.0000	0.00	baseline	baseline fixed
+20260408_015004	qwen3-embedding:0.6b	dim_corpus_4bit	4.0	1	0	0.9000	0.6766	0.041	0.036	0.178711	7.6503	0.00	reject	quality drop exceeds guardrail
+20260408_015004	qwen3-embedding:0.6b	dim_corpus_3.5bit	3.5	1	0	0.9000	0.6744	0.044	0.038	0.165283	8.2718	0.00	reject	quality drop exceeds guardrail
+20260408_015004	qwen3-embedding:0.6b	dim_corpus_3bit	3.0	1	0	0.9000	0.6478	0.044	0.036	0.135986	10.0539	0.00	reject	quality drop exceeds guardrail
+20260408_015346	qwen3-embedding:0.6b	baseline	32.0	0	0	0.9500	0.6978	0.026	0.019	1.367188	1.0000	0.00	baseline	baseline fixed
+20260408_015346	qwen3-embedding:0.6b	dim_corpus_4bit	4.0	1	0	0.9500	0.6616	0.041	0.038	0.180046	7.5935	0.00	reject	quality drop exceeds guardrail
+20260408_015346	qwen3-embedding:0.6b	dim_corpus_3.5bit	3.5	1	0	0.9500	0.6551	0.049	0.044	0.166618	8.2055	0.00	reject	quality drop exceeds guardrail
+20260408_015346	qwen3-embedding:0.6b	dim_corpus_3bit	3.0	1	0	0.9500	0.6140	0.043	0.039	0.137321	9.9561	0.00	reject	quality drop exceeds guardrail
+20260408_020052	qwen3-embedding:0.6b	baseline	32.0	0	0	0.9500	0.6978	0.026	0.020	1.367188	1.0000	0.00	baseline	baseline fixed
+20260408_020052	qwen3-embedding:0.6b	dim_corpus_4bit	4.0	1	0	0.9500	0.6616	0.040	0.037	0.180046	7.5935	0.00	reject	quality drop exceeds guardrail
+20260408_020052	qwen3-embedding:0.6b	dim_corpus_3.5bit	3.5	1	0	0.9500	0.6551	0.045	0.042	0.166618	8.2055	0.00	reject	quality drop exceeds guardrail
+20260408_020052	qwen3-embedding:0.6b	dim_corpus_3bit	3.0	1	0	0.9500	0.6140	0.050	0.038	0.137321	9.9561	0.00	reject	quality drop exceeds guardrail
+20260408_020052	qwen3-embedding:0.6b	dim_corpus_6bit	6.0	1	0	0.9500	0.6728	0.038	0.036	0.265495	5.1496	0.00	reject	quality drop exceeds guardrail
+20260408_020052	qwen3-embedding:0.6b	dim_corpus_5bit	5.0	1	0	0.9500	0.6812	0.038	0.037	0.222771	6.1372	0.00	reject	quality drop exceeds guardrail
+20260408_020304	qwen3-embedding:0.6b	baseline	32.0	0	0	0.9500	0.6978	0.027	0.020	1.367188	1.0000	0.00	baseline	baseline fixed
+20260408_020304	qwen3-embedding:0.6b	dim_corpus_4bit	4.0	1	0	0.9500	0.6616	0.052	0.039	0.180046	7.5935	0.00	reject	quality drop exceeds guardrail
+20260408_020304	qwen3-embedding:0.6b	dim_corpus_3.5bit	3.5	1	0	0.9500	0.6551	0.065	0.047	0.166618	8.2055	0.00	reject	quality drop exceeds guardrail
+20260408_020304	qwen3-embedding:0.6b	dim_corpus_3bit	3.0	1	0	0.9500	0.6140	0.042	0.038	0.137321	9.9561	0.00	reject	quality drop exceeds guardrail
+20260408_020304	qwen3-embedding:0.6b	dim_corpus_7bit	7.0	1	0	0.9500	0.6728	0.047	0.040	0.308220	4.4358	0.00	reject	quality drop exceeds guardrail
+20260408_020304	qwen3-embedding:0.6b	dim_corpus_6bit	6.0	1	0	0.9500	0.6728	0.041	0.039	0.265495	5.1496	0.00	reject	quality drop exceeds guardrail
+20260408_020304	qwen3-embedding:0.6b	dim_corpus_5bit	5.0	1	0	0.9500	0.6812	0.054	0.042	0.222771	6.1372	0.00	reject	quality drop exceeds guardrail
+20260408_020517	qwen3-embedding:0.6b	baseline	32.0	0	0	0.9500	0.6978	0.032	0.020	1.367188	1.0000	0.00	baseline	baseline fixed
+20260408_020517	qwen3-embedding:0.6b	dim_corpus_4bit	4.0	1	0	0.9500	0.7125	0.054	0.039	0.180046	7.5935	0.00	adjust	promising but misses at least one guardrail
+20260408_020517	qwen3-embedding:0.6b	dim_corpus_3.5bit	3.5	1	0	0.9500	0.6728	0.047	0.043	0.166618	8.2055	0.00	reject	quality drop exceeds guardrail
+20260408_020517	qwen3-embedding:0.6b	dim_corpus_3bit	3.0	1	0	0.9500	0.6859	0.040	0.037	0.137321	9.9561	0.00	adjust	promising but misses at least one guardrail
+20260408_020517	qwen3-embedding:0.6b	dim_corpus_7bit	7.0	1	0	0.9500	0.6978	0.041	0.037	0.308220	4.4358	0.00	adjust	promising but misses at least one guardrail
+20260408_020517	qwen3-embedding:0.6b	dim_corpus_6bit	6.0	1	0	0.9500	0.7228	0.039	0.037	0.265495	5.1496	0.00	adjust	promising but misses at least one guardrail
+20260408_020517	qwen3-embedding:0.6b	dim_corpus_5bit	5.0	1	0	0.9500	0.7244	0.041	0.037	0.222771	6.1372	0.00	adjust	promising but misses at least one guardrail
+20260408_021510	qwen3-embedding:0.6b	baseline	32.0	0	0	0.9500	0.6978	0.027	0.020	1.367188	1.0000	0.00	baseline	baseline fixed
+20260408_021510	qwen3-embedding:0.6b	dim_corpus_4bit	4.0	1	0	0.9500	0.7125	0.041	0.037	0.180046	7.5935	0.00	adopt	meets memory, quality, and latency gates
+20260408_021510	qwen3-embedding:0.6b	dim_corpus_3.5bit	3.5	1	0	0.9500	0.6728	0.047	0.043	0.166618	8.2055	0.00	reject	quality drop exceeds guardrail
+20260408_021510	qwen3-embedding:0.6b	dim_corpus_3bit	3.0	1	0	0.9500	0.6859	0.045	0.039	0.137321	9.9561	0.00	adjust	promising but misses at least one guardrail
+20260408_021510	qwen3-embedding:0.6b	dim_corpus_4bit_query	4.0	1	1	0.9000	0.5787	0.051	0.048	0.180046	7.5935	516.00	reject	quality drop exceeds guardrail

@@ -1,0 +1,113 @@
+{
+  "timestamp": "20260407_233112",
+  "base_url": "http://127.0.0.1:8090",
+  "eval_file": "/home/sam/memory/intentstack/intent_eval_set.jsonl",
+  "total": 7,
+  "correct": 1,
+  "accuracy": 0.1429,
+  "results": [
+    {
+      "index": 1,
+      "conv_id": "intent-eval-20260407_233112-1",
+      "prompt": "hello",
+      "expected_intent": "general_chat",
+      "predicted_intent": "general_chat",
+      "confidence": 0.99,
+      "memory_written": false,
+      "slots": {},
+      "correct": true,
+      "note": "basic greeting",
+      "assistant_text": "Hi. I am online and ready. What do you want to work on?",
+      "raw": {
+        "conv_id": "intent-eval-20260407_233112-1",
+        "intent": "general_chat",
+        "confidence": 0.99,
+        "slots": {},
+        "memory_written": false,
+        "assistant_text": "Hi. I am online and ready. What do you want to work on?",
+        "tool_route": null,
+        "skill_name": "chat_reply",
+        "skill_payload": null,
+        "skill_result": null
+      }
+    },
+    {
+      "index": 2,
+      "conv_id": "intent-eval-20260407_233112-2",
+      "prompt": "Please help me with docker setup",
+      "expected_intent": "tech_support",
+      "predicted_intent": "",
+      "confidence": null,
+      "memory_written": false,
+      "slots": {},
+      "correct": false,
+      "note": "technical assistance",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8090): Read timed out. (read timeout=60)"
+    },
+    {
+      "index": 3,
+      "conv_id": "intent-eval-20260407_233112-3",
+      "prompt": "Write a Python script that summarizes the request logs",
+      "expected_intent": "task_request",
+      "predicted_intent": "",
+      "confidence": null,
+      "memory_written": false,
+      "slots": {},
+      "correct": false,
+      "note": "direct build task",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8090): Read timed out. (read timeout=60)"
+    },
+    {
+      "index": 4,
+      "conv_id": "intent-eval-20260407_233112-4",
+      "prompt": "Plan a migration from sqlite to postgres for this service",
+      "expected_intent": "plan_project",
+      "predicted_intent": "",
+      "confidence": null,
+      "memory_written": false,
+      "slots": {},
+      "correct": false,
+      "note": "project planning",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8090): Read timed out. (read timeout=60)"
+    },
+    {
+      "index": 5,
+      "conv_id": "intent-eval-20260407_233112-5",
+      "prompt": "remember",
+      "expected_intent": "log_memory",
+      "predicted_intent": "",
+      "confidence": null,
+      "memory_written": false,
+      "slots": {},
+      "correct": false,
+      "note": "exact memory trigger",
+      "error": "500 Server Error: Internal Server Error for url: http://127.0.0.1:8090/chat"
+    },
+    {
+      "index": 6,
+      "conv_id": "intent-eval-20260407_233112-6",
+      "prompt": "What do you remember about this conversation?",
+      "expected_intent": "retrieve_memory",
+      "predicted_intent": "",
+      "confidence": null,
+      "memory_written": false,
+      "slots": {},
+      "correct": false,
+      "note": "memory read",
+      "error": "500 Server Error: Internal Server Error for url: http://127.0.0.1:8090/chat"
+    },
+    {
+      "index": 7,
+      "conv_id": "intent-eval-20260407_233112-7",
+      "prompt": "Train the intent router using these corrected examples",
+      "expected_intent": "train_intent",
+      "predicted_intent": "",
+      "confidence": null,
+      "memory_written": false,
+      "slots": {},
+      "correct": false,
+      "note": "intent training request",
+      "error": "500 Server Error: Internal Server Error for url: http://127.0.0.1:8090/chat"
+    }
+  ]
+}

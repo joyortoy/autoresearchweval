@@ -1,0 +1,1 @@
+{"verdict": "discard", "confidence": 0.0, "summary": "Metric value exceeds best before threshold.", "risks": ["Excessive memory usage"], "checks": {"metric_status_ok": false, "training_completed": true, "memory_within_bounds": false, "regression_risk": "low"}}

@@ -1,0 +1,1 @@
+{"verdict": "discard", "confidence": 0.8, "summary": "Val BPC too high, indicating poor performance.", "risks": ["High validation BPC"], "checks": {"metric_status_ok": false, "training_completed": true, "memory_within_bounds": true, "regression_risk": "low"}}

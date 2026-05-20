@@ -1,0 +1,1 @@
+{"verdict": "keep", "confidence": 0.8, "summary": "Completed with a reasonable metric and no obvious risks.", "risks": ["low memory utilization"], "checks": {"metric_status_ok": true, "training_completed": true, "memory_within_bounds": false, "regression_risk": "low"}}

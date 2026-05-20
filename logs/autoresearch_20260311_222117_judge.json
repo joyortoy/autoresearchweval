@@ -1,0 +1,1 @@
+{"verdict": "discard", "confidence": 0.0, "summary": "Val loss is worse than best before, violating metric criteria.", "risks": ["val_loss_exceeds_best"], "checks": {"metric_status_ok": false, "training_completed": true, "memory_within_bounds": true, "regression_risk": "high"}}

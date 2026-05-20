@@ -1,0 +1,1 @@
+{"verdict": "discard", "confidence": 0.85, "summary": "Metric status is discard, val_bpb exceeds best_before threshold.", "risks": ["val_bpb_above_threshold"], "checks": {"metric_status_ok": false, "training_completed": true, "memory_within_bounds": true, "regression_risk": "high"}}

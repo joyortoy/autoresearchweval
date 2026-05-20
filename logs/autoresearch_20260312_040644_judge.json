@@ -1,0 +1,1 @@
+{"verdict": "discard", "confidence": 0.8, "summary": "Val bpb is high, suggesting poor performance.", "risks": ["high val_bpb"], "checks": {"metric_status_ok": false, "training_completed": true, "memory_within_bounds": true, "regression_risk": "low"}}

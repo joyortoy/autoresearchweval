@@ -1,0 +1,5 @@
+Vocab size: 8,192
+CUDA capability: 12.0
+torch.compile model: False
+torch.compile optimizer: False
+Model config: {'sequence_len': 2048, 'vocab_size': 8192, 'n_layer': 6, 'n_head': 3, 'n_kv_head': 3, 'n_embd': 384, 'window_pattern': 'SSLL'}

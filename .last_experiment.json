@@ -1,0 +1,17 @@
+{
+  "device_batch_size": 8,
+  "total_batch_size": 131072,
+  "depth": 6,
+  "aspect_ratio": 64,
+  "head_dim": 128,
+  "window_pattern": "SSLL",
+  "embedding_lr": 0.6,
+  "unembedding_lr": 0.004,
+  "matrix_lr": 0.0529,
+  "scalar_lr": 0.5,
+  "weight_decay": 0.191101,
+  "warmup_ratio": 0.05,
+  "warmdown_ratio": 0.45,
+  "final_lr_frac": 0.1,
+  "description": "lower-weight-decay"
+}

@@ -1,0 +1,14 @@
+[Reply][warn] Memory bridge unavailable: clawvault context failed (250): Tip: 1 documents need embeddings. Run 'qmd embed' to index them.
+Expanding query.../home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:94: CUDA error
+[node-llama-cpp] CUDA error: the launch timed out and was terminated
+[node-llama-cpp]   current device: 0, in function ggml_backend_cuda_synchronize at /home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:2847
+[node-llama-cpp]   cudaStreamSynchronize(cuda_ctx->stream())
+[OpenClaw] Codex route was selected and failed.
+Error: codex exec failed
+returncode=1
+stdout={"type":"thread.started","thread_id":"019ce3a4-692c-70a3-805f-7d0b05ce257a"}
+{"type":"turn.started"}
+{"type":"error","message":"You've hit your usage limit. To get more access now, send a request to your admin or try again at Mar 17th, 2026 12:04 PM."}
+{"type":"turn.failed","error":{"message":"You've hit your usage limit. To get more access now, send a request to your admin or try again at Mar 17th, 2026 12:04 PM."}}
+stderr=
+No fallback applied. Fix Codex and retry.

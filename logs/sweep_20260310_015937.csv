@@ -1,0 +1,4 @@
+run_name,mode,device_batch_size,depth,status,val_bpb,train_log
+bs20_d8_20260310_015937,full,20,8,ok,1.229015,/home/sam/projects/autoresearch/logs/bs20_d8_20260310_015937_train.log
+bs24_d8_20260310_015937,full,24,8,failed,,/home/sam/projects/autoresearch/logs/bs24_d8_20260310_015937_train.log
+bs16_d6_20260310_015937,full,16,6,ok,1.199964,/home/sam/projects/autoresearch/logs/bs16_d6_20260310_015937_train.log

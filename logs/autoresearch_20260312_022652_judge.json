@@ -1,0 +1,1 @@
+{"verdict": "discard", "confidence": 0.8, "summary": "Metric status is discard due to poor validation performance.", "risks": ["performance_metric_below_threshold"], "checks": {"metric_status_ok": false, "training_completed": true, "memory_within_bounds": true, "regression_risk": "low"}}

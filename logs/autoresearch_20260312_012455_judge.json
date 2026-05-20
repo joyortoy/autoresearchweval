@@ -1,0 +1,1 @@
+{"verdict": "discard", "confidence": 0.8, "summary": "Discarded due to poor metric status.", "risks": ["metric status poor"], "checks": {"metric_status_ok": false, "training_completed": true, "memory_within_bounds": true, "regression_risk": "low"}}

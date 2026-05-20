@@ -1,0 +1,25 @@
+[Reply][warn] Memory bridge unavailable: clawvault context failed (250): Tip: 1 documents need embeddings. Run 'qmd embed' to index them.
+Expanding query... (1ms)
+├─ Give a 1-line health check acknowledgment
+├─ lex: Write a short
+├─ vec: Write a short acknowledgment for health concerns
+├─ vec: Tips for giving a brief health update
+└─ hyde: The topic of Give a 1-line health check acknowledgment covers Write a...
+Searching 5 queries...
+Embedding 4 queries.../home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:94: CUDA error
+/home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:94: CUDA error
+/home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:94: CUDA error
+/home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:94: CUDA error
+[node-llama-cpp] CUDA error: the launch timed out and was terminated
+[node-llama-cpp]   current device: 0, in function ggml_backend_cuda_host_buffer_free_buffer at /home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:1121
+[node-llama-cpp]   cudaFreeHost(buffer->context)
+[node-llama-cpp] CUDA error: the launch timed out and was terminated
+[node-llama-cpp]   current device: 0, in function ggml_backend_cuda_host_buffer_free_buffer at /home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:1121
+[node-llama-cpp]   cudaFreeHost(buffer->context)
+[node-llama-cpp] CUDA error: the launch timed out and was terminated
+[node-llama-cpp]   current device: 0, in function ggml_backend_cuda_host_buffer_free_buffer at /home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:1121
+[node-llama-cpp]   cudaFreeHost(buffer->context)
+[node-llama-cpp] CUDA error: the launch timed out and was terminated
+[node-llama-cpp]   current device: 0, in function ggml_backend_cuda_synchronize at /home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:2847
+[node-llama-cpp]   cudaStreamSynchronize(cuda_ctx->stream())
+Health check OK: OpenClaw Codex execution assistant is online and ready.

@@ -1,0 +1,17 @@
+Vocab size: 8,192
+CUDA capability: 12.0
+torch.compile model: False
+torch.compile optimizer: False
+Model config: {'sequence_len': 2048, 'vocab_size': 8192, 'n_layer': 6, 'n_head': 3, 'n_kv_head': 3, 'n_embd': 384, 'window_pattern': 'SSLL'}
+Parameter counts:
+  wte                     : 3,145,728
+  value_embeds            : 9,437,184
+  lm_head                 : 3,145,728
+  transformer_matrices    : 10,617,120
+  scalars                 : 12
+  total                   : 26,345,772
+Estimated FLOPs per token: 1.250444e+08
+Scaling AdamW LRs by 1/sqrt(384/768) = 1.414214
+Time budget: 300s
+Gradient accumulation steps: 8
+step 00000 (0.0%) | loss: 9.011224 | lrm: 0.00 | dt: 519ms | tok/sec: 252,642 | mfu: 3.2% | epoch: 1 | remaining: 300s    step 00001 (0.0%) | loss: 9.011128 | lrm: 0.00 | dt: 382ms | tok/sec: 343,323 | mfu: 4.3% | epoch: 1 | remaining: 300s    step 00002 (0.0%) | loss: 9.011040 | lrm: 0.00 | dt: 382ms | tok/sec: 343,499 | mfu: 4.3% | epoch: 1 | remaining: 300s    step 00003 (0.0%) | loss: 9.011058 | lrm: 0.00 | dt: 382ms | tok/sec: 343,443 | mfu: 4.3% | epoch: 1 | remaining: 300s    step 00004 (0.0%) | loss: 9.011039 | lrm: 0.00 | dt: 382ms | tok/sec: 343,502 | mfu: 4.3% | epoch: 1 | remaining: 300s    step 00005 (0.0%) | loss: 9.011071 | lrm: 0.00 | dt: 382ms | tok/sec: 343,491 | mfu: 4.3% | epoch: 1 | remaining: 300s    step 00006 (0.0%) | loss: 9.011144 | lrm: 0.00 | dt: 382ms | tok/sec: 343,474 | mfu: 4.3% | epoch: 1 | remaining: 300s    step 00007 (0.0%) | loss: 9.011111 | lrm: 0.00 | dt: 382ms | tok/sec: 343,431 | mfu: 4.3% | epoch: 1 | remaining: 300s    step 00008 (0.0%) | loss: 9.011094 | lrm: 0.00 | dt: 382ms | tok/sec: 343,391 | mfu: 4.3% | epoch: 1 | remaining: 300s    step 00009 (0.0%) | loss: 9.011097 | lrm: 0.00 | dt: 382ms | tok/sec: 343,493 | mfu: 4.3% | epoch: 1 | remaining: 300s    step 00010 (0.0%) | loss: 9.011125 | lrm: 0.00 | dt: 382ms | tok/sec: 343,437 | mfu: 4.3% | epoch: 1 | remaining: 300s    step 00011 (0.0%) | loss: 9.011082 | lrm: 0.00 | dt: 382ms | tok/sec: 343,515 | mfu: 4.3% | epoch: 1 | remaining: 300s    step 00012 (0.1%) | loss: 9.011103 | lrm: 0.03 | dt: 382ms | tok/sec: 343,469 | mfu: 4.3% | epoch: 1 | remaining: 299s    step 00013 (0.3%) | loss: 9.010148 | lrm: 0.05 | dt: 382ms | tok/sec: 343,429 | mfu: 4.3% | epoch: 1 | remaining: 299s    step 00014 (0.4%) | loss: 9.007258 | lrm: 0.08 | dt: 382ms | tok/sec: 343,428 | mfu: 4.3% | epoch: 1 | remaining: 298s    step 00015 (0.5%) | loss: 9.001781 | lrm: 0.10 | dt: 382ms | tok/sec: 343,374 | mfu: 4.3% | epoch: 1 | remaining: 298s    

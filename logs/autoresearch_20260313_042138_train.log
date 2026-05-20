@@ -1,0 +1,17 @@
+Vocab size: 8,192
+CUDA capability: 12.0
+torch.compile model: False
+torch.compile optimizer: False
+Model config: {'sequence_len': 2048, 'vocab_size': 8192, 'n_layer': 6, 'n_head': 3, 'n_kv_head': 3, 'n_embd': 384, 'window_pattern': 'SSLL'}
+Parameter counts:
+  wte                     : 3,145,728
+  value_embeds            : 9,437,184
+  lm_head                 : 3,145,728
+  transformer_matrices    : 10,617,120
+  scalars                 : 12
+  total                   : 26,345,772
+Estimated FLOPs per token: 1.250444e+08
+Scaling AdamW LRs by 1/sqrt(384/768) = 1.414214
+Time budget: 300s
+Gradient accumulation steps: 8
+step 00000 (0.0%) | loss: 9.011224 | lrm: 0.00 | dt: 513ms | tok/sec: 255,439 | mfu: 3.2% | epoch: 1 | remaining: 300s    step 00001 (0.0%) | loss: 9.011128 | lrm: 0.00 | dt: 380ms | tok/sec: 344,980 | mfu: 4.4% | epoch: 1 | remaining: 300s    step 00002 (0.0%) | loss: 9.011040 | lrm: 0.00 | dt: 380ms | tok/sec: 345,169 | mfu: 4.4% | epoch: 1 | remaining: 300s    

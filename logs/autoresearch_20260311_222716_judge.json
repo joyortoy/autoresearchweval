@@ -1,0 +1,1 @@
+{"verdict": "discard", "confidence": 0.0, "summary": "Metric status is discard, val_bpb is suboptimal.", "risks": ["metric_status"], "checks": {"metric_status_ok": false, "training_completed": true, "memory_within_bounds": true, "regression_risk": "low"}}

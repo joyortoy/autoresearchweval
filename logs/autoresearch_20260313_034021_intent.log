@@ -1,0 +1,35 @@
+[Reply][warn] Memory bridge unavailable: clawvault context failed (250): Tip: 1 documents need embeddings. Run 'qmd embed' to index them.
+Expanding query... (1ms)
+├─ Give a 1-line health check acknowledgment
+├─ lex: Write a short
+├─ vec: Write a short acknowledgment for health concerns
+├─ vec: Tips for giving a brief health update
+└─ hyde: The topic of Give a 1-line health check acknowledgment covers Write a...
+Searching 5 queries...
+Embedding 4 queries... (477ms)
+Reranking 32 chunks...]9;4;3]9;4;0 (1ms)
+/home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:94: CUDA error
+/home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:94: CUDA error
+/home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:94: CUDA error
+/home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:94: CUDA error
+[node-llama-cpp] CUDA error: the launch timed out and was terminated
+[node-llama-cpp] CUDA error: the launch timed out and was terminated
+[node-llama-cpp]   current device: 0, in function ggml_backend_cuda_host_buffer_free_buffer at /home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:1121
+[node-llama-cpp]   cudaFreeHost(buffer->context)
+[node-llama-cpp] CUDA error: the launch timed out and was terminated
+[node-llama-cpp] CUDA error: the launch timed out and was terminated
+[node-llama-cpp]   current device: 0, in function ggml_backend_cuda_host_buffer_free_buffer at /home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:1121
+[node-llama-cpp]   cudaFreeHost(buffer->context)
+[node-llama-cpp]   current device: 0, in function ggml_backend_cuda_host_buffer_free_buffer at /home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:1121
+[node-llama-cpp]   current device: 0, in function ggml_backend_cuda_host_buffer_free_buffer at /home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:1121
+[node-llama-cpp]   cudaFreeHost(buffer->context)
+[node-llama-cpp]   cudaFreeHost(buffer->context)
+[OpenClaw] Codex route was selected and failed.
+Error: codex exec failed
+returncode=1
+stdout={"type":"thread.started","thread_id":"019ce390-7fea-7803-965d-5e3df6c78570"}
+{"type":"turn.started"}
+{"type":"error","message":"You've hit your usage limit. To get more access now, send a request to your admin or try again at Mar 17th, 2026 12:04 PM."}
+{"type":"turn.failed","error":{"message":"You've hit your usage limit. To get more access now, send a request to your admin or try again at Mar 17th, 2026 12:04 PM."}}
+stderr=
+No fallback applied. Fix Codex and retry.

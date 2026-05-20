@@ -1,0 +1,5 @@
+run_name,intent_model,memory_model,status,health_status,active_intent_model,active_memory_model,reply_log
+intent_20260310_023009_glm4_9b__qwen2.5_7b-instruct,glm4:9b,qwen2.5:7b-instruct,ok,ok,glm4:9b,qwen2.5:7b-instruct,/home/sam/projects/autoresearch/logs/intent_20260310_023009_glm4_9b__qwen2.5_7b-instruct_intent.log
+intent_20260310_023009_glm4_9b__qwen2.5-coder_32b-instruct,glm4:9b,qwen2.5-coder:32b-instruct,ok,ok,glm4:9b,qwen2.5-coder:32b-instruct,/home/sam/projects/autoresearch/logs/intent_20260310_023009_glm4_9b__qwen2.5-coder_32b-instruct_intent.log
+intent_20260310_023009_qwen2.5_7b-instruct__qwen2.5_7b-instruct,qwen2.5:7b-instruct,qwen2.5:7b-instruct,mismatch,ok,glm4:9b,qwen2.5:7b-instruct,/home/sam/projects/autoresearch/logs/intent_20260310_023009_qwen2.5_7b-instruct__qwen2.5_7b-instruct_intent.log
+intent_20260310_023009_qwen2.5-coder_32b-instruct__qwen2.5_7b-instruct,qwen2.5-coder:32b-instruct,qwen2.5:7b-instruct,ok,ok,qwen2.5-coder:32b-instruct,qwen2.5:7b-instruct,/home/sam/projects/autoresearch/logs/intent_20260310_023009_qwen2.5-coder_32b-instruct__qwen2.5_7b-instruct_intent.log

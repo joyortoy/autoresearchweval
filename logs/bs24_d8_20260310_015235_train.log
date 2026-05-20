@@ -1,0 +1,10 @@
+Vocab size: 8,192
+Model config: {'sequence_len': 2048, 'vocab_size': 8192, 'n_layer': 8, 'n_head': 4, 'n_kv_head': 4, 'n_embd': 512, 'window_pattern': 'SSSL'}
+Parameter counts:
+  wte                     : 4,194,304
+  value_embeds            : 16,777,216
+  lm_head                 : 4,194,304
+  transformer_matrices    : 25,166,336
+  scalars                 : 16
+  total                   : 50,332,176
+Estimated FLOPs per token: 2.390784e+08

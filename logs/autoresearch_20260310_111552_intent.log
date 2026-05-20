@@ -1,0 +1,9 @@
+[OpenClaw] Codex route was selected and failed.
+Error: codex exec failed
+returncode=1
+stdout={"type":"thread.started","thread_id":"019cd5be-74d8-7e93-9bde-d3c8ae64b32e"}
+{"type":"turn.started"}
+{"type":"error","message":"You've hit your usage limit. To get more access now, send a request to your admin or try again at 6:52 PM."}
+{"type":"turn.failed","error":{"message":"You've hit your usage limit. To get more access now, send a request to your admin or try again at 6:52 PM."}}
+stderr=
+No fallback applied. Fix Codex and retry.

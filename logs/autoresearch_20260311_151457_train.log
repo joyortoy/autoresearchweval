@@ -1,0 +1,14 @@
+Vocab size: 8,192
+Model config: {'sequence_len': 2048, 'vocab_size': 8192, 'n_layer': 6, 'n_head': 3, 'n_kv_head': 3, 'n_embd': 384, 'window_pattern': 'SSLL'}
+Parameter counts:
+  wte                     : 3,145,728
+  value_embeds            : 9,437,184
+  lm_head                 : 3,145,728
+  transformer_matrices    : 10,617,120
+  scalars                 : 12
+  total                   : 26,345,772
+Estimated FLOPs per token: 1.250444e+08
+Scaling AdamW LRs by 1/sqrt(384/768) = 1.414214
+Time budget: 300s
+Gradient accumulation steps: 16
+step 00000 (0.0%) | loss: 9.011212 | lrm: 1.00 | dt: 11904ms | tok/sec: 66,062 | mfu: 0.8% | epoch: 1 | remaining: 300s    step 00001 (0.0%) | loss: 8.870634 | lrm: 1.00 | dt: 2319ms | tok/sec: 339,178 | mfu: 4.3% | epoch: 1 | remaining: 300s    step 00002 (0.0%) | loss: 8.454515 | lrm: 1.00 | dt: 2296ms | tok/sec: 342,564 | mfu: 4.3% | epoch: 1 | remaining: 300s    step 00003 (0.0%) | loss: 7.999145 | lrm: 1.00 | dt: 2306ms | tok/sec: 341,030 | mfu: 4.3% | epoch: 1 | remaining: 300s    

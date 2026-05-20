@@ -1,0 +1,637 @@
+{
+  "cases_file": "/home/sam/projects/autoresearch/logs/qwen_intent_train_20260318_025719_retrieval_cases.json",
+  "case_count": 20,
+  "collection": "intent-memory",
+  "modes": [
+    "query"
+  ],
+  "runs": [
+    {
+      "model_label": "live",
+      "model": "ollama:qwen3-embedding:0.6b",
+      "config_label": "baseline",
+      "env_overrides": {},
+      "embed_seconds": 5.64,
+      "modes": {
+        "query": {
+          "summary": {
+            "hit_at_1": "8/20",
+            "hit_at_k": "19/20",
+            "mrr": 0.61,
+            "top1_forbidden": 0,
+            "top_k": 5,
+            "categories": {
+              "default_command": {
+                "cases": 5,
+                "hit_at_1": "4/5",
+                "hit_at_k": "4/5",
+                "mrr": 0.8
+              },
+              "failure_handling": {
+                "cases": 4,
+                "hit_at_1": "1/4",
+                "hit_at_k": "4/4",
+                "mrr": 0.625
+              },
+              "model_setting": {
+                "cases": 3,
+                "hit_at_1": "2/3",
+                "hit_at_k": "3/3",
+                "mrr": 0.75
+              },
+              "status_style": {
+                "cases": 4,
+                "hit_at_1": "1/4",
+                "hit_at_k": "4/4",
+                "mrr": 0.479
+              },
+              "update_style": {
+                "cases": 4,
+                "hit_at_1": "0/4",
+                "hit_at_k": "4/4",
+                "mrr": 0.383
+              }
+            }
+          },
+          "cases": [
+            {
+              "id": "bullet_updates_1",
+              "category": "update_style",
+              "query": "What format did I ask you to use for updates?",
+              "hit_rank": 5,
+              "rr": 0.2,
+              "top1_file": "qmd://intent-memory/deep-8e355c1c-dd5a-41bf-9023-368e3dee0eb8.md",
+              "top1_score": 0.76,
+              "matched_file": "qmd://intent-memory/deep-afcd5d96-ba01-4f5c-8d08-5162f28d5962.md",
+              "matched_via": "expect_regex",
+              "expected_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "bullet_updates_2",
+              "category": "update_style",
+              "query": "How should updates be written?",
+              "hit_rank": 2,
+              "rr": 0.5,
+              "top1_file": "qmd://intent-memory/deep-7318fb23-d75b-45b9-a5fb-a10665c8703e.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "bullet_updates_3",
+              "category": "update_style",
+              "query": "Which preference mentions concise bullet updates?",
+              "hit_rank": 2,
+              "rr": 0.5,
+              "top1_file": "qmd://intent-memory/deep-2bbb55e3-2c52-4bb9-b610-46866f229b83.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "bullet_updates_4",
+              "category": "update_style",
+              "query": "What update style did I ask for?",
+              "hit_rank": 3,
+              "rr": 0.3333333333333333,
+              "top1_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "terse_status_1",
+              "category": "status_style",
+              "query": "How should status updates be phrased?",
+              "hit_rank": 3,
+              "rr": 0.3333333333333333,
+              "top1_file": "qmd://intent-memory/deep-7318fb23-d75b-45b9-a5fb-a10665c8703e.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "terse_status_2",
+              "category": "status_style",
+              "query": "Did I ask for terse status updates?",
+              "hit_rank": 1,
+              "rr": 1.0,
+              "top1_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "terse_status_3",
+              "category": "status_style",
+              "query": "What style should status updates use?",
+              "hit_rank": 3,
+              "rr": 0.3333333333333333,
+              "top1_file": "qmd://intent-memory/deep-7318fb23-d75b-45b9-a5fb-a10665c8703e.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "terse_status_4",
+              "category": "status_style",
+              "query": "Which preference talks about terse status updates?",
+              "hit_rank": 4,
+              "rr": 0.25,
+              "top1_file": "qmd://intent-memory/deep-7318fb23-d75b-45b9-a5fb-a10665c8703e.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "summarize_failures_1",
+              "category": "failure_handling",
+              "query": "What should come before proposed fixes?",
+              "hit_rank": 2,
+              "rr": 0.5,
+              "top1_file": "qmd://intent-memory/deep-8e355c1c-dd5a-41bf-9023-368e3dee0eb8.md",
+              "top1_score": 0.76,
+              "matched_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "summarize_failures_2",
+              "category": "failure_handling",
+              "query": "How should you handle failures before suggesting fixes?",
+              "hit_rank": 2,
+              "rr": 0.5,
+              "top1_file": "qmd://intent-memory/deep-f0d9b21b-ca31-4d07-a0d0-ee3a1b3e4ed6.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "summarize_failures_3",
+              "category": "failure_handling",
+              "query": "Which instruction says to summarize failures before proposing fixes?",
+              "hit_rank": 2,
+              "rr": 0.5,
+              "top1_file": "qmd://intent-memory/deep-f0d9b21b-ca31-4d07-a0d0-ee3a1b3e4ed6.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "summarize_failures_4",
+              "category": "failure_handling",
+              "query": "What failure-handling preference did I ask you to remember?",
+              "hit_rank": 1,
+              "rr": 1.0,
+              "top1_file": "qmd://intent-memory/deep-f0d9b21b-ca31-4d07-a0d0-ee3a1b3e4ed6.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-f0d9b21b-ca31-4d07-a0d0-ee3a1b3e4ed6.md",
+              "matched_via": "expect_regex",
+              "expected_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "default_command_1",
+              "category": "default_command",
+              "query": "What is my default test command?",
+              "hit_rank": 1,
+              "rr": 1.0,
+              "top1_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "default_command_2",
+              "category": "default_command",
+              "query": "What should I run for quick checks?",
+              "hit_rank": 1,
+              "rr": 1.0,
+              "top1_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "default_command_3",
+              "category": "default_command",
+              "query": "Which command did I ask you to remember for tests?",
+              "hit_rank": null,
+              "rr": 0.0,
+              "top1_file": "qmd://intent-memory/deep-62c38825-fdaa-40a0-b4d4-2dfa42e63fae.md",
+              "top1_score": 1.05,
+              "matched_file": null,
+              "matched_via": null,
+              "expected_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "default_command_4",
+              "category": "default_command",
+              "query": "What's my pytest shortcut?",
+              "hit_rank": 1,
+              "rr": 1.0,
+              "top1_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "default_command_5",
+              "category": "default_command",
+              "query": "What do you know about my default test command?",
+              "hit_rank": 1,
+              "rr": 1.0,
+              "top1_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "model_setting_1",
+              "category": "model_setting",
+              "query": "What model is set for intent training?",
+              "hit_rank": 1,
+              "rr": 1.0,
+              "top1_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+              "top1_score": 1.11,
+              "matched_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "model_setting_2",
+              "category": "model_setting",
+              "query": "Which model was set for memory logging?",
+              "hit_rank": 4,
+              "rr": 0.25,
+              "top1_file": "qmd://intent-memory/deep-d2792efd-363e-4db8-af00-53303e08efb4.md",
+              "top1_score": 0.76,
+              "matched_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "model_setting_3",
+              "category": "model_setting",
+              "query": "What current model should I remember for intent training?",
+              "hit_rank": 1,
+              "rr": 1.0,
+              "top1_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+              "top1_score": 1.11,
+              "matched_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+              "top1_forbidden": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "model_label": "live",
+      "model": "ollama:qwen3-embedding:0.6b",
+      "config_label": "wide-candidates",
+      "env_overrides": {
+        "QMD_RERANK_CANDIDATE_LIMIT": "60"
+      },
+      "embed_seconds": 4.72,
+      "modes": {
+        "query": {
+          "summary": {
+            "hit_at_1": "8/20",
+            "hit_at_k": "19/20",
+            "mrr": 0.625,
+            "top1_forbidden": 0,
+            "top_k": 5,
+            "categories": {
+              "default_command": {
+                "cases": 5,
+                "hit_at_1": "4/5",
+                "hit_at_k": "4/5",
+                "mrr": 0.8
+              },
+              "failure_handling": {
+                "cases": 4,
+                "hit_at_1": "1/4",
+                "hit_at_k": "4/4",
+                "mrr": 0.542
+              },
+              "model_setting": {
+                "cases": 3,
+                "hit_at_1": "2/3",
+                "hit_at_k": "3/3",
+                "mrr": 0.75
+              },
+              "status_style": {
+                "cases": 4,
+                "hit_at_1": "1/4",
+                "hit_at_k": "4/4",
+                "mrr": 0.625
+              },
+              "update_style": {
+                "cases": 4,
+                "hit_at_1": "0/4",
+                "hit_at_k": "4/4",
+                "mrr": 0.396
+              }
+            }
+          },
+          "cases": [
+            {
+              "id": "bullet_updates_1",
+              "category": "update_style",
+              "query": "What format did I ask you to use for updates?",
+              "hit_rank": 2,
+              "rr": 0.5,
+              "top1_file": "qmd://intent-memory/deep-8e355c1c-dd5a-41bf-9023-368e3dee0eb8.md",
+              "top1_score": 0.76,
+              "matched_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "bullet_updates_2",
+              "category": "update_style",
+              "query": "How should updates be written?",
+              "hit_rank": 2,
+              "rr": 0.5,
+              "top1_file": "qmd://intent-memory/deep-7318fb23-d75b-45b9-a5fb-a10665c8703e.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "bullet_updates_3",
+              "category": "update_style",
+              "query": "Which preference mentions concise bullet updates?",
+              "hit_rank": 3,
+              "rr": 0.3333333333333333,
+              "top1_file": "qmd://intent-memory/deep-2bbb55e3-2c52-4bb9-b610-46866f229b83.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "bullet_updates_4",
+              "category": "update_style",
+              "query": "What update style did I ask for?",
+              "hit_rank": 4,
+              "rr": 0.25,
+              "top1_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "terse_status_1",
+              "category": "status_style",
+              "query": "How should status updates be phrased?",
+              "hit_rank": 2,
+              "rr": 0.5,
+              "top1_file": "qmd://intent-memory/deep-7318fb23-d75b-45b9-a5fb-a10665c8703e.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "terse_status_2",
+              "category": "status_style",
+              "query": "Did I ask for terse status updates?",
+              "hit_rank": 1,
+              "rr": 1.0,
+              "top1_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "terse_status_3",
+              "category": "status_style",
+              "query": "What style should status updates use?",
+              "hit_rank": 2,
+              "rr": 0.5,
+              "top1_file": "qmd://intent-memory/deep-7318fb23-d75b-45b9-a5fb-a10665c8703e.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "terse_status_4",
+              "category": "status_style",
+              "query": "Which preference talks about terse status updates?",
+              "hit_rank": 2,
+              "rr": 0.5,
+              "top1_file": "qmd://intent-memory/deep-7318fb23-d75b-45b9-a5fb-a10665c8703e.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "summarize_failures_1",
+              "category": "failure_handling",
+              "query": "What should come before proposed fixes?",
+              "hit_rank": 3,
+              "rr": 0.3333333333333333,
+              "top1_file": "qmd://intent-memory/deep-8e355c1c-dd5a-41bf-9023-368e3dee0eb8.md",
+              "top1_score": 0.76,
+              "matched_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "summarize_failures_2",
+              "category": "failure_handling",
+              "query": "How should you handle failures before suggesting fixes?",
+              "hit_rank": 3,
+              "rr": 0.3333333333333333,
+              "top1_file": "qmd://intent-memory/deep-f0d9b21b-ca31-4d07-a0d0-ee3a1b3e4ed6.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "summarize_failures_3",
+              "category": "failure_handling",
+              "query": "Which instruction says to summarize failures before proposing fixes?",
+              "hit_rank": 2,
+              "rr": 0.5,
+              "top1_file": "qmd://intent-memory/deep-f0d9b21b-ca31-4d07-a0d0-ee3a1b3e4ed6.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "summarize_failures_4",
+              "category": "failure_handling",
+              "query": "What failure-handling preference did I ask you to remember?",
+              "hit_rank": 1,
+              "rr": 1.0,
+              "top1_file": "qmd://intent-memory/deep-f0d9b21b-ca31-4d07-a0d0-ee3a1b3e4ed6.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-f0d9b21b-ca31-4d07-a0d0-ee3a1b3e4ed6.md",
+              "matched_via": "expect_regex",
+              "expected_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "default_command_1",
+              "category": "default_command",
+              "query": "What is my default test command?",
+              "hit_rank": 1,
+              "rr": 1.0,
+              "top1_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "default_command_2",
+              "category": "default_command",
+              "query": "What should I run for quick checks?",
+              "hit_rank": 1,
+              "rr": 1.0,
+              "top1_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "default_command_3",
+              "category": "default_command",
+              "query": "Which command did I ask you to remember for tests?",
+              "hit_rank": null,
+              "rr": 0.0,
+              "top1_file": "qmd://intent-memory/deep-62c38825-fdaa-40a0-b4d4-2dfa42e63fae.md",
+              "top1_score": 1.05,
+              "matched_file": null,
+              "matched_via": null,
+              "expected_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "default_command_4",
+              "category": "default_command",
+              "query": "What's my pytest shortcut?",
+              "hit_rank": 1,
+              "rr": 1.0,
+              "top1_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "default_command_5",
+              "category": "default_command",
+              "query": "What do you know about my default test command?",
+              "hit_rank": 1,
+              "rr": 1.0,
+              "top1_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_score": 0.93,
+              "matched_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "model_setting_1",
+              "category": "model_setting",
+              "query": "What model is set for intent training?",
+              "hit_rank": 1,
+              "rr": 1.0,
+              "top1_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+              "top1_score": 1.11,
+              "matched_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "model_setting_2",
+              "category": "model_setting",
+              "query": "Which model was set for memory logging?",
+              "hit_rank": 4,
+              "rr": 0.25,
+              "top1_file": "qmd://intent-memory/deep-d2792efd-363e-4db8-af00-53303e08efb4.md",
+              "top1_score": 0.76,
+              "matched_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+              "top1_forbidden": false
+            },
+            {
+              "id": "model_setting_3",
+              "category": "model_setting",
+              "query": "What current model should I remember for intent training?",
+              "hit_rank": 1,
+              "rr": 1.0,
+              "top1_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+              "top1_score": 1.11,
+              "matched_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+              "matched_via": "expected_file",
+              "expected_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+              "top1_forbidden": false
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "final_model": "ollama:qwen3-embedding:0.6b"
+}

@@ -39,6 +39,86 @@ uv run train.py
 
 If the above commands all work ok, your setup is working and you can go into autonomous research mode.
 
+## Local launcher
+
+This workspace also includes `./run_intent_autoresearch.sh` for a repeatable local flow that:
+
+- checks or starts IntentStack on `http://127.0.0.1:8090`
+- runs an OpenClaw intent smoke call
+- optionally launches `uv run train.py`
+
+Examples:
+
+```bash
+# smoke test intent only
+./run_intent_autoresearch.sh smoke
+
+# full intent + training run
+./run_intent_autoresearch.sh full
+
+# tune the Blackwell-safe path without editing train.py
+AUTORESEARCH_DEVICE_BATCH_SIZE=24 AUTORESEARCH_DEPTH=6 ./run_intent_autoresearch.sh full
+
+# override the default eager Blackwell path if you want to test torch.compile anyway
+AUTORESEARCH_TORCH_COMPILE=1 AUTORESEARCH_COMPILED_OPTIMIZER=1 ./run_intent_autoresearch.sh full
+
+# explicitly run the two-model Ollama intent stack
+INTENTSTACK_MODEL_INTENT=glm4:9b INTENTSTACK_MODEL_MEMORY_AGENT=qwen2.5:7b-instruct ./run_intent_autoresearch.sh smoke
+
+# restart IntentStack if the running model pair differs
+FORCE_RESTART_INTENTSTACK=1 INTENTSTACK_MODEL_INTENT=glm4:9b INTENTSTACK_MODEL_MEMORY_AGENT=qwen2.5:7b-instruct ./run_intent_autoresearch.sh smoke
+```
+
+Logs are written to `./logs/` by default and can be redirected with `AUTORESEARCH_LOG_DIR`.
+
+This repo is now best treated as the legacy qwen/retrieval experiment branch.
+The active always-on service lives under `/home/sam/projects/intentautoresearch`.
+For one consolidated host report across both repos, run:
+
+```bash
+cd /home/sam/projects/intentautoresearch
+./report_autoresearch.sh
+```
+
+On Blackwell (`sm_120`, e.g. RTX 5090), `train.py` defaults `torch.compile` off for both the model and fused optimizer helpers. FlashAttention is already disabled there as well. This keeps the default path on eager PyTorch kernels unless you explicitly opt back in with `AUTORESEARCH_TORCH_COMPILE=1` and `AUTORESEARCH_COMPILED_OPTIMIZER=1`.
+
+For a compact Blackwell sweep over the currently interesting `device_batch_size` and `depth` combinations:
+
+```bash
+./sweep_blackwell.sh full
+```
+
+This writes a CSV summary into `./logs/` with one row per run, including failed or OOM configurations.
+
+For an IntentStack model-pair sweep across the locally installed Ollama models:
+
+```bash
+./sweep_intent_models.sh
+```
+
+This restarts IntentStack per pair, runs the OpenClaw smoke path, and writes a CSV summary into `./logs/`.
+
+## Constant runner
+
+For a constantly running local loop, use:
+
+```bash
+./run_forever_intent_autoresearch.sh
+```
+
+This repeatedly runs the full intent + autoresearch flow and appends supervisor output to `./logs/autoresearch_supervisor.log`.
+
+A user-level systemd unit is also included at `/home/sam/.config/systemd/user/autoresearch-loop.service`.
+
+Useful commands:
+
+```bash
+systemctl --user daemon-reload
+systemctl --user enable --now autoresearch-loop.service
+systemctl --user status autoresearch-loop.service
+journalctl --user -u autoresearch-loop.service -f
+```
+
 ## Running the agent
 
 Simply spin up your Claude/Codex or whatever you want in this repo (and disable all permissions), then you can prompt something like:

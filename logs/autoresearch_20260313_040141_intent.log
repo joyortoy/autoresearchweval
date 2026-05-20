@@ -1,0 +1,33 @@
+[Reply][warn] Memory bridge unavailable: clawvault context failed (250): Tip: 1 documents need embeddings. Run 'qmd embed' to index them.
+Expanding query... (1ms)
+├─ Give a 1-line health check acknowledgment
+├─ lex: Write a short
+├─ vec: Write a short acknowledgment for health concerns
+├─ vec: Tips for giving a brief health update
+└─ hyde: The topic of Give a 1-line health check acknowledgment covers Write a...
+Searching 5 queries...
+Embedding 4 queries.../home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:94: CUDA error
+/home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:94: CUDA error
+[node-llama-cpp] CUDA error: an internal operation failed
+[node-llama-cpp]   current device: 0, in function ggml_cuda_mul_mat_batched_cublas_impl at /home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:1988
+[node-llama-cpp]   cublasGemmBatchedEx(ctx.cublas_handle(), CUBLAS_OP_T, CUBLAS_OP_N, ne01, ne11, ne10, alpha, (const void **) (ptrs_src.get() + 0*ne23), cu_data_type_a, nb01/nb00, (const void **) (ptrs_src.get() + 1*ne23), cu_data_type_b, s11, beta, ( void **) (ptrs_dst.get() + 0*ne23), cu_data_type, ne0, ne23, cu_compute_type, CUBLAS_GEMM_DEFAULT_TENSOR_OP)
+[node-llama-cpp] CUDA error: an internal operation failed
+[node-llama-cpp]   current device: 0, in function ggml_cuda_mul_mat_batched_cublas_impl at /home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:1988
+[node-llama-cpp]   cublasGemmBatchedEx(ctx.cublas_handle(), CUBLAS_OP_T, CUBLAS_OP_N, ne01, ne11, ne10, alpha, (const void **) (ptrs_src.get() + 0*ne23), cu_data_type_a, nb01/nb00, (const void **) (ptrs_src.get() + 1*ne23), cu_data_type_b, s11, beta, ( void **) (ptrs_dst.get() + 0*ne23), cu_data_type, ne0, ne23, cu_compute_type, CUBLAS_GEMM_DEFAULT_TENSOR_OP)
+/home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:94: CUDA error
+[node-llama-cpp] CUDA error: an internal operation failed
+[node-llama-cpp]   current device: 0, in function ggml_cuda_mul_mat_batched_cublas_impl at /home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:1988
+[node-llama-cpp]   cublasGemmBatchedEx(ctx.cublas_handle(), CUBLAS_OP_T, CUBLAS_OP_N, ne01, ne11, ne10, alpha, (const void **) (ptrs_src.get() + 0*ne23), cu_data_type_a, nb01/nb00, (const void **) (ptrs_src.get() + 1*ne23), cu_data_type_b, s11, beta, ( void **) (ptrs_dst.get() + 0*ne23), cu_data_type, ne0, ne23, cu_compute_type, CUBLAS_GEMM_DEFAULT_TENSOR_OP)
+/home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:94: CUDA error
+[node-llama-cpp] CUDA error: an internal operation failed
+[node-llama-cpp]   current device: 0, in function ggml_cuda_mul_mat_batched_cublas_impl at /home/sam/qmd-src/node_modules/node-llama-cpp/llama/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:1988
+[node-llama-cpp]   cublasGemmBatchedEx(ctx.cublas_handle(), CUBLAS_OP_T, CUBLAS_OP_N, ne01, ne11, ne10, alpha, (const void **) (ptrs_src.get() + 0*ne23), cu_data_type_a, nb01/nb00, (const void **) (ptrs_src.get() + 1*ne23), cu_data_type_b, s11, beta, ( void **) (ptrs_dst.get() + 0*ne23), cu_data_type, ne0, ne23, cu_compute_type, CUBLAS_GEMM_DEFAULT_TENSOR_OP)
+[OpenClaw] Codex route was selected and failed.
+Error: codex exec failed
+returncode=1
+stdout={"type":"thread.started","thread_id":"019ce3a4-079f-7462-8161-0a0f674d4efb"}
+{"type":"turn.started"}
+{"type":"error","message":"You've hit your usage limit. To get more access now, send a request to your admin or try again at Mar 17th, 2026 12:04 PM."}
+{"type":"turn.failed","error":{"message":"You've hit your usage limit. To get more access now, send a request to your admin or try again at Mar 17th, 2026 12:04 PM."}}
+stderr=
+No fallback applied. Fix Codex and retry.

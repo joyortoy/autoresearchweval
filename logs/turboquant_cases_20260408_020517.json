@@ -1,0 +1,162 @@
+[
+  {
+    "id": "bullet_updates_1",
+    "category": "update_style",
+    "query": "What format did I ask you to use for updates?",
+    "expect_regex": "concise bullet updates",
+    "expected_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+    "note_text": "Skill instruction: use concise bullet updates"
+  },
+  {
+    "id": "bullet_updates_2",
+    "category": "update_style",
+    "query": "How should updates be written?",
+    "expect_regex": "concise bullet updates",
+    "expected_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+    "note_text": "Skill instruction: use concise bullet updates"
+  },
+  {
+    "id": "bullet_updates_3",
+    "category": "update_style",
+    "query": "Which preference mentions concise bullet updates?",
+    "expect_regex": "concise bullet updates",
+    "expected_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+    "note_text": "Skill instruction: use concise bullet updates"
+  },
+  {
+    "id": "bullet_updates_4",
+    "category": "update_style",
+    "query": "What update style did I ask for?",
+    "expect_regex": "concise bullet updates",
+    "expected_file": "qmd://intent-memory/deep-088b9ca9-2e3c-4ff9-87b5-55c26bb3d7ae.md",
+    "note_text": "Skill instruction: use concise bullet updates"
+  },
+  {
+    "id": "terse_status_1",
+    "category": "status_style",
+    "query": "How should status updates be phrased?",
+    "expect_regex": "terse status updates",
+    "expected_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+    "note_text": "Skill instruction: use terse status updates"
+  },
+  {
+    "id": "terse_status_2",
+    "category": "status_style",
+    "query": "Did I ask for terse status updates?",
+    "expect_regex": "terse status updates",
+    "expected_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+    "note_text": "Skill instruction: use terse status updates"
+  },
+  {
+    "id": "terse_status_3",
+    "category": "status_style",
+    "query": "What style should status updates use?",
+    "expect_regex": "terse status updates",
+    "expected_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+    "note_text": "Skill instruction: use terse status updates"
+  },
+  {
+    "id": "terse_status_4",
+    "category": "status_style",
+    "query": "Which preference talks about terse status updates?",
+    "expect_regex": "terse status updates",
+    "expected_file": "qmd://intent-memory/deep-15bb18eb-77ae-45d1-902b-e477574511b3.md",
+    "note_text": "Skill instruction: use terse status updates"
+  },
+  {
+    "id": "summarize_failures_1",
+    "category": "failure_handling",
+    "query": "What should come before proposed fixes?",
+    "expect_regex": "summarize failures before proposing fixes|summarize failures before fixes",
+    "expected_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+    "note_text": "Skill instruction: always summarize failures before proposing fixes"
+  },
+  {
+    "id": "summarize_failures_2",
+    "category": "failure_handling",
+    "query": "How should you handle failures before suggesting fixes?",
+    "expect_regex": "summarize failures before proposing fixes|summarize failures before fixes",
+    "expected_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+    "note_text": "Skill instruction: always summarize failures before proposing fixes"
+  },
+  {
+    "id": "summarize_failures_3",
+    "category": "failure_handling",
+    "query": "Which instruction says to summarize failures before proposing fixes?",
+    "expect_regex": "summarize failures before proposing fixes|summarize failures before fixes",
+    "expected_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+    "note_text": "Skill instruction: always summarize failures before proposing fixes"
+  },
+  {
+    "id": "summarize_failures_4",
+    "category": "failure_handling",
+    "query": "What failure-handling preference did I ask you to remember?",
+    "expect_regex": "summarize failures before proposing fixes|summarize failures before fixes",
+    "expected_file": "qmd://intent-memory/deep-3a200fcd-cf4e-4fba-bd48-10664f345e93.md",
+    "note_text": "Skill instruction: always summarize failures before proposing fixes"
+  },
+  {
+    "id": "default_command_1",
+    "category": "default_command",
+    "query": "What is my default test command?",
+    "expect_regex": "pytest\\ \\-q|quick\\ checks",
+    "expected_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+    "note_text": "default to pytest -q for quick checks"
+  },
+  {
+    "id": "default_command_2",
+    "category": "default_command",
+    "query": "What should I run for quick checks?",
+    "expect_regex": "pytest\\ \\-q|quick\\ checks",
+    "expected_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+    "note_text": "default to pytest -q for quick checks"
+  },
+  {
+    "id": "default_command_3",
+    "category": "default_command",
+    "query": "Which command did I ask you to remember for tests?",
+    "expect_regex": "pytest\\ \\-q|quick\\ checks",
+    "expected_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+    "note_text": "default to pytest -q for quick checks"
+  },
+  {
+    "id": "default_command_4",
+    "category": "default_command",
+    "query": "What's my pytest shortcut?",
+    "expect_regex": "pytest\\ \\-q|quick\\ checks",
+    "expected_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+    "note_text": "default to pytest -q for quick checks"
+  },
+  {
+    "id": "default_command_5",
+    "category": "default_command",
+    "query": "What do you know about my default test command?",
+    "expect_regex": "pytest\\ \\-q|quick\\ checks",
+    "expected_file": "qmd://intent-memory/deep-5fd1147f-cf66-4e50-a9dd-9b8c5e12f84a.md",
+    "note_text": "default to pytest -q for quick checks"
+  },
+  {
+    "id": "model_setting_1",
+    "category": "model_setting",
+    "query": "What model is set for intent training?",
+    "expect_regex": "GLM4:9b|intent\\ training\\ and\\ memory\\ logging",
+    "expected_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+    "note_text": "Current model set to GLM4:9b for intent training and memory logging."
+  },
+  {
+    "id": "model_setting_2",
+    "category": "model_setting",
+    "query": "Which model was set for memory logging?",
+    "expect_regex": "GLM4:9b|intent\\ training\\ and\\ memory\\ logging",
+    "expected_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+    "note_text": "Current model set to GLM4:9b for intent training and memory logging."
+  },
+  {
+    "id": "model_setting_3",
+    "category": "model_setting",
+    "query": "What current model should I remember for intent training?",
+    "expect_regex": "GLM4:9b|intent\\ training\\ and\\ memory\\ logging",
+    "expected_file": "qmd://intent-memory/internal-a2918cf7-3771-48b6-a8bf-e528e0a5b603.md",
+    "note_text": "Current model set to GLM4:9b for intent training and memory logging."
+  }
+]
