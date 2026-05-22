@@ -33,10 +33,12 @@ proposal
 ## Attention-Direction Governance
 
 This project treats alignment as attention-direction awareness during bounded experimentation.
+The idea: give an AI agent a small but real LLM training setup and let it experiment autonomously overnight. It modifies the code, trains for 5 minutes, checks if the result improved, keeps or discards, and repeats. You wake up in the morning to a log of experiments and (hopefully) a better model. The training code here is a simplified single-GPU implementation of [nanochat](https://github.com/karpathy/nanochat). The core idea is that you're not touching any of the Python files like you normally would as a researcher. Instead, you are programming the `program.md` Markdown files that provide context to the AI agents and set up your autonomous research org. The default `program.md` in this repo is intentionally kept as a bare bones baseline, though it's obvious how one would iterate on it over time to find the "research org code" that achieves the fastest research progress, how you'd add more agents to the mix, etc. A bit more context on this project is here in this [tweet](https://x.com/karpathy/status/2029701092347630069) and [this tweet](https://x.com/karpathy/status/2031135152349524125).
 
 The governance layer monitors whether representation/attention appears to move toward an intended alignment direction or toward unsafe attention directions.
 
 Attention drift may provide early warning signals before obviously harmful output appears, but this is still an experimental interpretability-inspired signal.
+The repo is deliberately kept small and only really has three files that matter:
 
 **This project explores whether representation-space telemetry and attention-direction signals can contribute useful governance information during bounded autonomous model iteration.**
 
@@ -120,6 +122,10 @@ Shell compatibility wrapper:
 - `docs/threat_model.md`
 - `docs/calibration.md`
 - `docs/open_source_boundary.md`
+- [miolini/autoresearch-macos](https://github.com/miolini/autoresearch-macos) (MacOS)
+- [trevin-creator/autoresearch-mlx](https://github.com/trevin-creator/autoresearch-mlx) (MacOS)
+- [jsegov/autoresearch-win-rtx](https://github.com/jsegov/autoresearch-win-rtx) (Windows)
+- [andyluo7/autoresearch](https://github.com/andyluo7/autoresearch) (AMD)
 
 ## License
 
