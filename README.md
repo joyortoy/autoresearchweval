@@ -136,6 +136,9 @@ Shell compatibility wrapper:
 - `docs/threat_model.md`
 - `docs/calibration.md`
 - `docs/open_source_boundary.md`
+- `docs/initial_findings.md`
+- `examples/test_runs/complex_intent_runs.sample.csv`
+- `examples/test_runs/complex_intent_runs.sample.json`
 
 ## License
 

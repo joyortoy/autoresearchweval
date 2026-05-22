@@ -1,0 +1,7 @@
+source,loop,iteration,status,experiment,planner,loss,accuracy,macro_f1,vram_gb,trend,note
+complex_intent_sanitized,complex_intent,1,keep,best-lr-down,planner_v1,0.842,0.781,0.742,21.4,improving,"baseline keep decision"
+complex_intent_sanitized,complex_intent,2,discard,best-lr-down,planner_v1,0.911,0.744,0.701,21.6,weakening,"macro_f1 drop triggered discard"
+complex_intent_sanitized,complex_intent,3,keep,best-lr-up,planner_v2,0.803,0.796,0.758,22.1,improving,"recovered on lr-up branch"
+complex_intent_sanitized,complex_intent,4,discard,best-lr-up,planner_v2,0.956,0.721,0.673,22.0,weakening,"accuracy and macro_f1 regressed"
+complex_intent_sanitized,complex_intent,5,keep,best-lr-down,planner_v2,0.788,0.804,0.769,22.3,improving,"new local best in sample window"
+complex_intent_sanitized,complex_intent,6,discard,best-lr-down,planner_v2,0.928,0.736,0.689,22.2,weakening,"loss spike with lower macro_f1"
