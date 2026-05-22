@@ -18,10 +18,10 @@ import requests
 
 
 ROOT = Path(__file__).resolve().parent
-DEFAULT_CORPUS = Path("/home/sam/memory/intentstack-memory-backfill")
-DEFAULT_CASE_BUILDER = Path("/home/sam/qmd-src/scripts/build_intent_memory_cases.py")
+DEFAULT_CORPUS = Path(os.getenv("AUTORESEARCH_TURBOQUANT_CORPUS", ""))
+DEFAULT_CASE_BUILDER = Path(os.getenv("AUTORESEARCH_TURBOQUANT_CASES_BUILDER", ""))
 DEFAULT_MODEL_URI = "ollama:qwen3-embedding:0.6b"
-DEFAULT_OLLAMA_HOST = os.getenv("QMD_OLLAMA_HOST") or os.getenv("OLLAMA_HOST") or "http://127.0.0.1:11434"
+DEFAULT_OLLAMA_HOST = os.getenv("QMD_OLLAMA_HOST") or os.getenv("OLLAMA_HOST") or ""
 FRONTMATTER_RE = re.compile(r"^---\s*\n[\s\S]*?\n---\s*\n*", re.MULTILINE)
 
 
@@ -644,6 +644,18 @@ def print_result(result: dict, decision: str, note: str) -> None:
 
 
 def run_experiment(args: argparse.Namespace) -> dict:
+    if not args.corpus:
+        raise SystemExit(
+            "Missing --corpus. Set AUTORESEARCH_TURBOQUANT_CORPUS or pass --corpus explicitly."
+        )
+    if not args.cases_builder:
+        raise SystemExit(
+            "Missing --cases-builder. Set AUTORESEARCH_TURBOQUANT_CASES_BUILDER or pass --cases-builder explicitly."
+        )
+    if not args.ollama_host:
+        raise SystemExit(
+            "Missing --ollama-host. Set OLLAMA_HOST/QMD_OLLAMA_HOST or pass --ollama-host explicitly."
+        )
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     model_name = parse_model_name(args.model)
     docs = load_corpus(Path(args.corpus), args.collection)
@@ -819,9 +831,9 @@ def run_experiment(args: argparse.Namespace) -> dict:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Compact TurboQuant-style autoresearch benchmark for local embeddings.")
-    parser.add_argument("--corpus", default=str(DEFAULT_CORPUS))
+    parser.add_argument("--corpus", default=str(DEFAULT_CORPUS) if str(DEFAULT_CORPUS) != "." else "")
     parser.add_argument("--collection", default="intent-memory")
-    parser.add_argument("--cases-builder", default=str(DEFAULT_CASE_BUILDER))
+    parser.add_argument("--cases-builder", default=str(DEFAULT_CASE_BUILDER) if str(DEFAULT_CASE_BUILDER) != "." else "")
     parser.add_argument("--cases", default="")
     parser.add_argument("--model", default=DEFAULT_MODEL_URI)
     parser.add_argument("--ollama-host", default=DEFAULT_OLLAMA_HOST)
