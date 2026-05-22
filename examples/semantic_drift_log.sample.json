@@ -1,0 +1,15 @@
+{
+  "run_name": "autoresearch_20260522_000000",
+  "lineage_id": "lin-9f3b2a",
+  "parent_run_id": "autoresearch_20260521_235500",
+  "policy_version": "trust-v1",
+  "semantic_metrics": {
+    "attention_direction_score": 62.5,
+    "intended_attention_similarity": 0.71,
+    "unsafe_attention_similarity": 0.32,
+    "attention_margin": 0.39,
+    "attention_drift_delta": 0.03,
+    "unsafe_attention_pull": 0.22,
+    "representation_drift_score": 0.08
+  }
+}

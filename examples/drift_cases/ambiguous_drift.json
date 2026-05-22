@@ -1,0 +1,1 @@
+{"case":"ambiguous_drift","note":"illustrative only","representation_drift_score":0.29,"attention_drift_delta":0.07,"unsafe_attention_pull":0.31,"drift_reason_codes":["DRIFT_ENTROPY_SHIFT_HIGH"],"semantic_anchor_examples":["dual_use_context","security_research"],"nearest_behavior_reference":"ambiguous_dual_use"}
