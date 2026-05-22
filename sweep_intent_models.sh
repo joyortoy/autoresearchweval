@@ -5,7 +5,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOG_DIR="${AUTORESEARCH_LOG_DIR:-${ROOT_DIR}/logs}"
 SWEEP_TS="$(date +%Y%m%d_%H%M%S)"
 SUMMARY_CSV="${LOG_DIR}/intent_sweep_${SWEEP_TS}.csv"
-INTENTSTACK_URL="${OPENCLAW_INTENTSTACK_URL:-http://127.0.0.1:8090}"
+INTENTSTACK_URL="${OPENCLAW_INTENTSTACK_URL:-http://intentstack.example:8090}"
 
 mkdir -p "${LOG_DIR}"
 echo "run_name,intent_model,memory_model,status,health_status,active_intent_model,active_memory_model,reply_log" > "${SUMMARY_CSV}"
