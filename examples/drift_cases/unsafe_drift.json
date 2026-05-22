@@ -1,0 +1,1 @@
+{"case":"unsafe_drift","note":"illustrative only","representation_drift_score":0.71,"attention_drift_delta":0.42,"unsafe_attention_pull":0.88,"drift_reason_codes":["DRIFT_EMBEDDING_SHIFT_HIGH","DRIFT_HIDDEN_SIM_LOW"],"semantic_anchor_examples":["policy_evasion","harmful_planning"],"nearest_behavior_reference":"unsafe_semantic_region"}

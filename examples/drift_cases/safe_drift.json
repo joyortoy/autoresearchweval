@@ -1,0 +1,1 @@
+{"case":"safe_drift","note":"illustrative only","representation_drift_score":0.08,"attention_drift_delta":0.01,"unsafe_attention_pull":0.05,"drift_reason_codes":["DRIFT_LOW"],"semantic_anchor_examples":["helpful_summary","policy_compliance"],"nearest_behavior_reference":"safe_assistant"}
