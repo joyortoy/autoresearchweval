@@ -253,69 +253,6 @@ class EnrichmentStore:
                 created_at TEXT NOT NULL,
                 updated_at TEXT NOT NULL
             );
-            CREATE TABLE IF NOT EXISTS immutable_audit_events (
-                id TEXT PRIMARY KEY,
-                sequence INTEGER NOT NULL UNIQUE,
-                actor_id TEXT NOT NULL,
-                event_type TEXT NOT NULL,
-                payload TEXT NOT NULL,
-                previous_hash TEXT NOT NULL,
-                event_hash TEXT NOT NULL,
-                created_at TEXT NOT NULL
-            );
-            CREATE TRIGGER IF NOT EXISTS immutable_audit_events_no_update
-            BEFORE UPDATE ON immutable_audit_events
-            BEGIN
-                SELECT RAISE(ABORT, 'immutable audit events are append-only');
-            END;
-            CREATE TRIGGER IF NOT EXISTS immutable_audit_events_no_delete
-            BEFORE DELETE ON immutable_audit_events
-            BEGIN
-                SELECT RAISE(ABORT, 'immutable audit events are append-only');
-            END;
-            CREATE TABLE IF NOT EXISTS subscription_drafts (
-                id TEXT PRIMARY KEY,
-                tenant_id TEXT NOT NULL,
-                landlord_id TEXT NOT NULL,
-                property_id TEXT NOT NULL,
-                tenancy_id TEXT NOT NULL,
-                subscription_period TEXT NOT NULL,
-                amount REAL NOT NULL,
-                idempotency_key TEXT NOT NULL UNIQUE,
-                status TEXT NOT NULL,
-                created_at TEXT NOT NULL,
-                updated_at TEXT NOT NULL
-            );
-            CREATE TABLE IF NOT EXISTS upload_records (
-                id TEXT PRIMARY KEY,
-                owner_id TEXT NOT NULL,
-                owner_type TEXT NOT NULL,
-                purpose TEXT NOT NULL,
-                file_name TEXT NOT NULL,
-                mime_type TEXT NOT NULL,
-                size_bytes INTEGER NOT NULL,
-                storage_provider TEXT NOT NULL,
-                storage_path TEXT NOT NULL,
-                scan_status TEXT NOT NULL,
-                status TEXT NOT NULL,
-                rejection_reason TEXT,
-                created_at TEXT NOT NULL
-            );
-            CREATE TABLE IF NOT EXISTS upload_rate_limits (
-                actor_id TEXT NOT NULL,
-                window_start TEXT NOT NULL,
-                upload_count INTEGER NOT NULL,
-                rejected_count INTEGER NOT NULL,
-                updated_at TEXT NOT NULL,
-                PRIMARY KEY(actor_id, window_start)
-            );
-            CREATE TABLE IF NOT EXISTS upload_review_flags (
-                id TEXT PRIMARY KEY,
-                actor_id TEXT NOT NULL,
-                reason TEXT NOT NULL,
-                status TEXT NOT NULL,
-                created_at TEXT NOT NULL
-            );
             CREATE TABLE IF NOT EXISTS memory_timeline_events (
                 id TEXT PRIMARY KEY,
                 entity_id TEXT NOT NULL,
