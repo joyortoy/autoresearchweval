@@ -1,0 +1,16 @@
+{
+  "schema": "joyview.model-release-manifest/v1",
+  "model_id": "render-guardian-incumbent",
+  "release_status": "promoted",
+  "rollback_target": "none",
+  "artifact_checksum": "0000000000000000000000000000000000000000000000000000000000000000",
+  "supported_contract_versions": [
+    "joyview.render-adjustment/v1"
+  ],
+  "supported_device_tiers": [
+    "low",
+    "mid",
+    "high"
+  ],
+  "weights_committed_to_git": false
+}

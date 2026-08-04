@@ -1,0 +1,19 @@
+{
+  "id": "distracting_wallpaper",
+  "expected": "repair",
+  "layout": {
+    "surfaces": [
+      {
+        "id": "w1",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 200,
+          "height": 100
+        },
+        "contrast_ratio": 3.5
+      }
+    ],
+    "unused_high_priority_space": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://joyortoy.com/schemas/joyview.model-release-manifest.v1.schema.json",
+  "type": "object",
+  "required": [
+    "schema"
+  ],
+  "properties": {
+    "schema": {
+      "const": "joyview.model-release-manifest/v1"
+    }
+  },
+  "additionalProperties": true
+}

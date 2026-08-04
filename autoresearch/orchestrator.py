@@ -19,6 +19,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--policy", default="trust_policy.json", help="Path to trust policy JSON.")
     parser.add_argument("--metrics", default="", help="Reserved for future external metrics ingestion.")
     parser.add_argument("--run-name", default="", help="Optional explicit run name.")
+    parser.add_argument("--task", default="", help="Optional governed task profile (e.g. joyview_render_guardian).")
     parser.add_argument("--enable-optional-evals", action="store_true", help="Reserved optional plugin switch (disabled by default).")
     parser.add_argument("--notify", action="store_true", help="Emit lightweight local notifications.")
     parser.add_argument("--human-review-checkpoint", action="store_true", help="Mark this run as requiring human governance checkpoint.")

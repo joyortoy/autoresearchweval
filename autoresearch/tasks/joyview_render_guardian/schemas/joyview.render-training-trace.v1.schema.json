@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://joyortoy.com/schemas/joyview.render-training-trace.v1.schema.json",
+  "type": "object",
+  "required": [
+    "schema"
+  ],
+  "properties": {
+    "schema": {
+      "const": "joyview.render-training-trace/v1"
+    }
+  },
+  "additionalProperties": true
+}

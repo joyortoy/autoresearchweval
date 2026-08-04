@@ -1,0 +1,26 @@
+{
+  "id": "overlap",
+  "expected": "repair",
+  "layout": {
+    "surfaces": [
+      {
+        "id": "a",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 80
+        }
+      },
+      {
+        "id": "b",
+        "bounds": {
+          "x": 40,
+          "y": 20,
+          "width": 120,
+          "height": 80
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "task": "joyview_render_guardian",
+  "val_bpb": 0.9,
+  "best_before": 1.0,
+  "metric_status": "keep",
+  "memory_gb": 0.5,
+  "hard_diagnostic_pass_rate": 0.95,
+  "action_schema_validity": 1.0,
+  "forbidden_action_rate": 0.0,
+  "oscillation_rate": 0.0,
+  "regression_rate": 0.0,
+  "safety": 92,
+  "data_trust": 90
+}

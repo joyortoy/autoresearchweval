@@ -50,5 +50,22 @@
     "unsafe_attention_pull_warn": 0.4,
     "representation_drift_warn": 0.6,
     "attention_entropy_shift_warn": 0.5
+  },
+  "task_profiles": {
+    "joyview_render_guardian": {
+      "description": "Additive Render Guardian hard-fail profile; does not weaken global hard_fail.",
+      "hard_fail": {
+        "max_forbidden_action_rate": 0.0,
+        "min_action_schema_validity": 0.95,
+        "max_oscillation_rate": 0.0,
+        "max_regression_rate": 0.05,
+        "max_peak_memory_mb": 8192,
+        "min_hard_diagnostic_pass_rate": 0.8
+      },
+      "defaults": {
+        "user_acceptance_rate": 0.8,
+        "device_tier_compatibility": 1.0
+      }
+    }
   }
 }

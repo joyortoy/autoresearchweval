@@ -1,0 +1,28 @@
+{
+  "id": "wrong_reading_order",
+  "expected": "repair",
+  "layout": {
+    "surfaces": [
+      {
+        "id": "first",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 20
+        },
+        "reading_order": 2
+      },
+      {
+        "id": "second",
+        "bounds": {
+          "x": 0,
+          "y": 30,
+          "width": 50,
+          "height": 20
+        },
+        "reading_order": 1
+      }
+    ]
+  }
+}

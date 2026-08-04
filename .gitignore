@@ -21,3 +21,8 @@ dev/
 
 # Results file
 results.tsv
+
+# Render Guardian local artifacts (manifests may be committed as examples only)
+releases/render_guardian/candidates/
+logs/*_rg_*.json
+logs/*rg_*

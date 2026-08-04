@@ -1,0 +1,31 @@
+{
+  "id": "excessive_density",
+  "expected": "repair",
+  "layout": {
+    "unused_high_priority_space": false,
+    "surfaces": [
+      {
+        "id": "d1",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 40
+        },
+        "touch_width_px": 30,
+        "touch_height_px": 30
+      },
+      {
+        "id": "d2",
+        "bounds": {
+          "x": 35,
+          "y": 0,
+          "width": 40,
+          "height": 40
+        },
+        "touch_width_px": 30,
+        "touch_height_px": 30
+      }
+    ]
+  }
+}

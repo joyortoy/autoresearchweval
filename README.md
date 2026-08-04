@@ -27,6 +27,18 @@ Important implementation note:
 - attention/representation telemetry is currently **adapter-driven or mock-driven** (JSON/env/probe inputs),
 - this repo does **not** yet include deep model-internal instrumentation for a production model backend.
 
+## JoyView Render Guardian
+
+Governed task profile `joyview_render_guardian` trains a small local visual repair student (SmolVLM) from user-approved sanitized JoyView render traces, with Qwen-VL as a non-authoritative teacher. The existing orchestrator, `trust_score.py`, and `trust_policy.json` remain authoritative.
+
+```bash
+make render-guardian-demo
+make render-guardian-test
+make render-guardian-env-check
+```
+
+Docs: `docs/joyview-render-guardian.md`.
+
 ## Core flow
 
 ```text

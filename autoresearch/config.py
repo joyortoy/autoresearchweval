@@ -20,6 +20,7 @@ class Config:
     policy_hash: str
     policy_approved_by: str
     policy_change_requires_review: bool
+    task: str
 
 
 def load_config(args) -> Config:
@@ -39,6 +40,7 @@ def load_config(args) -> Config:
     parent_run_id = os.getenv("AUTORESEARCH_PARENT_RUN_ID") or None
     lineage_id = os.getenv("AUTORESEARCH_LINEAGE_ID", f"lin-{run_name}")
     ancestor_hash = hashlib.sha1(f"{parent_run_id or 'root'}:{run_name}".encode("utf-8")).hexdigest()[:12]
+    task = getattr(args, "task", "") or os.getenv("AUTORESEARCH_TASK", "")
     return Config(
         root_dir=root,
         log_dir=log_dir,
@@ -56,4 +58,5 @@ def load_config(args) -> Config:
         policy_hash=policy_hash,
         policy_approved_by=os.getenv("AUTORESEARCH_POLICY_APPROVED_BY", "unassigned"),
         policy_change_requires_review=os.getenv("AUTORESEARCH_POLICY_CHANGE_REQUIRES_REVIEW", "1") == "1",
+        task=str(task or ""),
     )

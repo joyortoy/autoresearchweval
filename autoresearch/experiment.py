@@ -4,6 +4,7 @@ from dataclasses import asdict, dataclass
 from typing import Any
 
 from .evaluator import metric_status
+from .rollback import should_keep
 from .state import append_result_row, best_kept_val_bpb
 from .trainer import run_training
 from .trust_gate import apply_trust
@@ -30,6 +31,9 @@ class RunOutcome:
 
 
 def run_once(cfg: Any, dry_run: bool = False) -> dict[str, Any]:
+    if getattr(cfg, "task", ""):
+        return _run_task(cfg, dry_run=dry_run)
+
     if dry_run:
         trust = apply_trust(
             cfg.policy,
@@ -149,3 +153,78 @@ def cfg_float(name: str, default: float) -> float:
         return float(os.getenv(name, str(default)))
     except Exception:
         return default
+
+
+def _run_task(cfg: Any, *, dry_run: bool) -> dict[str, Any]:
+    from .tasks import get_task
+
+    adapter = get_task(cfg.task)
+    governed = adapter.run_governed(cfg, dry_run=dry_run)
+    metrics = dict(governed.get("metrics") or {})
+    trust = apply_trust(cfg.policy, cfg.trust_log, metrics)
+    # Task-specific hard fails remain fail-closed even if scorer bands would keep.
+    rg_fails = list(metrics.get("rg_hard_fail_reasons") or [])
+    if rg_fails:
+        trust = dict(trust)
+        trust["status"] = "discard"
+        trust["decision"] = "rollback"
+        trust["hard_fail"] = True
+        trust["hard_fail_reasons"] = list(trust.get("hard_fail_reasons") or []) + rg_fails
+    final_status = trust.get("status", "discard")
+    if not should_keep(final_status):
+        final_status = "discard"
+    val = f"{float(metrics.get('val_bpb', 0.99)):.6f}"
+    memory_gb = f"{float(metrics.get('memory_gb', 0.5)):.1f}"
+    append_result_row(
+        cfg.results_tsv,
+        "task",
+        val,
+        memory_gb,
+        final_status,
+        f"task:{adapter.task_id}:{'dry-run' if dry_run else 'run'}",
+    )
+    outcome = asdict(
+        RunOutcome(
+            status=final_status,
+            val_bpb=val,
+            memory_gb=memory_gb,
+            trust_decision=trust.get("decision", "rollback"),
+            trust_score=trust.get("trust_score"),
+            hard_fail_reasons=trust.get("hard_fail_reasons", []),
+            description=f"task:{adapter.task_id}",
+            lineage_id=cfg.lineage_id,
+            parent_run_id=cfg.parent_run_id,
+            ancestor_hash=cfg.ancestor_hash,
+            policy_version=cfg.policy_version,
+            policy_hash=cfg.policy_hash,
+            cumulative_attention_drift=cfg_float("AUTORESEARCH_CUMULATIVE_ATTENTION_DRIFT", 0.0),
+            drift_velocity=cfg_float("AUTORESEARCH_DRIFT_VELOCITY", 0.0),
+            drift_acceleration=cfg_float("AUTORESEARCH_DRIFT_ACCELERATION", 0.0),
+            lineage_drift_history=[],
+        )
+    )
+    outcome.update(
+        {
+            "task": adapter.task_id,
+            "proposal": governed.get("proposal"),
+            "dataset": governed.get("dataset"),
+            "teacher_label": governed.get("teacher_label"),
+            "train_result": governed.get("train_result"),
+            "eval_result": {
+                "metrics": (governed.get("eval_result") or {}).get("metrics"),
+                "case_count": len((governed.get("eval_result") or {}).get("cases") or []),
+            },
+            "rollback_target": governed.get("rollback_target"),
+            "kept": should_keep(final_status),
+        }
+    )
+    release = adapter.release_artifact(cfg, outcome)
+    if release:
+        outcome["release_manifest"] = {
+            "path": release.get("manifest_path"),
+            "checksum": release.get("manifest_checksum"),
+            "release_status": release.get("release_status"),
+            "model_id": release.get("model_id"),
+            "artifact_checksum": release.get("artifact_checksum"),
+        }
+    return outcome

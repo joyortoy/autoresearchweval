@@ -1,0 +1,18 @@
+{
+  "id": "wasted_space",
+  "expected": "repair",
+  "layout": {
+    "unused_high_priority_space": true,
+    "surfaces": [
+      {
+        "id": "s",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 40
+        }
+      }
+    ]
+  }
+}
