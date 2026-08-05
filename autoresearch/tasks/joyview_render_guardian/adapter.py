@@ -162,6 +162,20 @@ class JoyViewRenderGuardianAdapter:
             metrics["_policy_profile"] = (policy.get("task_profiles") or {}).get(self.task_id) or {}
         except Exception:
             metrics["_policy_profile"] = {}
+        # Fail closed when a requested real CUDA train does not produce a checkpoint.
+        if not dry_run:
+            train_failed = train_result.get("status") != "ok"
+            skipped = bool((train_result.get("metrics") or {}).get("skipped_real_train"))
+            enable_real = os.getenv("RENDER_GUARDIAN_ENABLE_REAL_TRAIN", "0") == "1"
+            if enable_real and (train_failed or skipped):
+                metrics["metric_status"] = "discard"
+                metrics["deterministic_safety_failed"] = True
+                metrics["rg_hard_fail_reasons"] = list(metrics.get("rg_hard_fail_reasons") or []) + [
+                    "HF_RG_DETERMINISTIC_SAFETY"
+                ]
+                metrics["train_failure"] = train_result.get("error") or (train_result.get("metrics") or {}).get(
+                    "skip_reason"
+                )
         rg_fails = self.hard_fail_check(metrics)
         if rg_fails:
             metrics["metric_status"] = "discard"

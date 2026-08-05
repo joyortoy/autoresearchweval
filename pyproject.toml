@@ -21,6 +21,7 @@ render-guardian = [
     "accelerate>=1.0.0",
     "peft>=0.13.0",
     "pillow>=10.0.0",
+    "torchvision>=0.24.0",
     "transformers>=4.46.0",
 ]
 
