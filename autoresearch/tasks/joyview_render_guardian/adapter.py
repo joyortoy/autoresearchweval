@@ -73,11 +73,12 @@ class JoyViewRenderGuardianAdapter:
         )
 
     def train_student(self, cfg: Any, dataset: dict[str, Any], *, dry_run: bool) -> dict[str, Any]:
-        smoke = dry_run or os.getenv("RENDER_GUARDIAN_SMOKE", "0") == "1"
+        # SMOKE shortens steps; it must NOT force dry_run (that skips CUDA).
+        smoke = (not dry_run) and os.getenv("RENDER_GUARDIAN_SMOKE", "0") == "1"
         result = student.train_student(
             dataset=dataset,
-            dry_run=dry_run or smoke,
-            smoke=smoke,
+            dry_run=dry_run,
+            smoke=smoke or dry_run,
             seed=int(os.getenv("RENDER_GUARDIAN_SEED", "42")),
             output_dir=Path(cfg.root_dir) / "releases" / "render_guardian" / "candidates",
         )
