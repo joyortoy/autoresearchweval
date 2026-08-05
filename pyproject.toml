@@ -16,8 +16,20 @@ dependencies = [
     "torch==2.9.1",
 ]
 
+[project.optional-dependencies]
+render-guardian = [
+    "accelerate>=1.0.0",
+    "peft>=0.13.0",
+    "pillow>=10.0.0",
+    "transformers>=4.46.0",
+]
+
 [project.scripts]
 autoresearch = "autoresearch.orchestrator:main"
+
+[tool.setuptools.packages.find]
+include = ["autoresearch*"]
+exclude = ["logs*", "experiments*", "telemetry*", "tests*", "examples*", "releases*"]
 
 [tool.uv.sources]
 torch = [

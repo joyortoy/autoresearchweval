@@ -2,8 +2,8 @@ PYTHON ?= python3.11
 
 .PHONY: demo test trust-sample lint-shell \
 	render-guardian-demo render-guardian-test render-guardian-smoke \
-	render-guardian-train render-guardian-eval render-guardian-autoresearch \
-	render-guardian-release render-guardian-env-check
+	render-guardian-train render-guardian-smoke-gpu render-guardian-eval \
+	render-guardian-autoresearch render-guardian-release render-guardian-env-check
 
 demo:
 	$(PYTHON) -m autoresearch.orchestrator --dry-run
@@ -27,7 +27,10 @@ render-guardian-smoke:
 	RENDER_GUARDIAN_SMOKE=1 $(PYTHON) -m autoresearch.orchestrator --dry-run --task joyview_render_guardian --run-name rg_smoke
 
 render-guardian-train:
-	RENDER_GUARDIAN_SMOKE=0 $(PYTHON) -m autoresearch.orchestrator --task joyview_render_guardian --run-name rg_train
+	RENDER_GUARDIAN_ENABLE_REAL_TRAIN=1 RENDER_GUARDIAN_SMOKE=0 $(PYTHON) -m autoresearch.orchestrator --task joyview_render_guardian --run-name rg_train
+
+render-guardian-smoke-gpu:
+	RENDER_GUARDIAN_ENABLE_REAL_TRAIN=1 RENDER_GUARDIAN_SMOKE=1 $(PYTHON) -m autoresearch.orchestrator --task joyview_render_guardian --run-name rg_smoke_gpu
 
 render-guardian-eval:
 	$(PYTHON) -c "from autoresearch.tasks.joyview_render_guardian.evaluate import run_evaluation; import json; print(json.dumps(run_evaluation()['metrics'], indent=2))"
