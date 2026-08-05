@@ -192,15 +192,28 @@ def _real_train(
     for step in range(max_steps):
         ex = examples[step % len(examples)]
         image = Image.new("RGB", (512, 512), color=(240, 240, 240))
-        prompt = (
-            "User: Inspect this JoyView render metadata and emit JoyViewRenderAdjustmentV1 JSON only.\n"
-            f"Diagnostics: {', '.join(ex['findings']) or 'none'}\n"
-            "Assistant:"
+        user_text = (
+            "Inspect this JoyView render and emit JoyViewRenderAdjustmentV1 JSON only. "
+            f"Diagnostics: {', '.join(ex['findings']) or 'none'}."
         )
         target = json.dumps(ex["target"], ensure_ascii=False)
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {"type": "image"},
+                    {"type": "text", "text": user_text},
+                ],
+            },
+            {
+                "role": "assistant",
+                "content": [{"type": "text", "text": target}],
+            },
+        ]
+        prompt = processor.apply_chat_template(messages, add_generation_prompt=False)
         inputs = processor(
-            text=prompt + " " + target,
-            images=image,
+            text=prompt,
+            images=[image],
             return_tensors="pt",
         )
         inputs = {k: v.to(model.device) if hasattr(v, "to") else v for k, v in inputs.items()}
