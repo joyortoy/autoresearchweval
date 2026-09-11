@@ -1,9 +1,15 @@
+import sqlite3
+from datetime import datetime, timedelta, timezone
+
 from autoresearch.enrichment import (
     ENTITY_TYPES,
     RENTAL_SIGNAL_TYPES,
     EnrichmentModule,
     EnrichmentStore,
+    FixedVirusScanProvider,
+    LocalUploadStorageProvider,
     RealEstateRagAdapter,
+    S3UploadStorageProvider,
     SearchProvider,
     build_search_provider,
 )
@@ -24,7 +30,7 @@ class CompanyEnrichmentModule(EnrichmentModule):
         return {
             "source_url": url,
             "raw_text": '{"signals":[{"signal_type":"hiring_signal","content":"Growing AE headcount."},{"signal_type":"product_launch","content":"Launched AI copilot."}]}',
-            "fetched_at": "2026-05-20T00:00:00+00:00",
+            "fetched_at": datetime.now(timezone.utc).isoformat(),
         }
 
 
@@ -33,7 +39,7 @@ class TenantEnrichmentModule(EnrichmentModule):
         return {
             "source_url": url,
             "raw_text": "Moving to Singapore in August. Budget S$4k-S$5k. Looking for 2BR condo near MRT in Tanjong Pagar. Family of 3, no pets, 12 months lease. Contact me at tenant@example.com or +65 9123 4567.",
-            "fetched_at": "2026-05-20T00:00:00+00:00",
+            "fetched_at": datetime.now(timezone.utc).isoformat(),
         }
 
 
@@ -42,7 +48,7 @@ class PropertyEnrichmentModule(EnrichmentModule):
         return {
             "source_url": url,
             "raw_text": "Owner renting 1BR condo in Tanjong Pagar. Rent S$4.2k, available July, fully furnished. Viewing this weekend. Prefer professionals. Address 123 Example Road.",
-            "fetched_at": "2026-05-20T00:00:00+00:00",
+            "fetched_at": datetime.now(timezone.utc).isoformat(),
         }
 
 
@@ -519,6 +525,7 @@ def test_approved_rag_intake_marks_memory_as_approved_before_matching():
 
 
 def memory_os_packet(**overrides):
+    now = datetime.now(timezone.utc)
     packet = {
         "packetId": "packet-1",
         "entityId": "tenant-123",
@@ -532,8 +539,8 @@ def memory_os_packet(**overrides):
                 "freshness": 0.9,
                 "verificationStatus": "verified",
                 "sourceType": "manual_import",
-                "observedAt": "2026-06-01T00:00:00+00:00",
-                "expiresAt": "2026-08-01T00:00:00+00:00",
+                "observedAt": now.isoformat(),
+                "expiresAt": (now + timedelta(days=60)).isoformat(),
             },
             {
                 "signalType": "viewing_intent",
@@ -542,8 +549,8 @@ def memory_os_packet(**overrides):
                 "freshness": 0.9,
                 "verificationStatus": "verified",
                 "sourceType": "manual_import",
-                "observedAt": "2026-06-01T00:00:00+00:00",
-                "expiresAt": "2026-08-01T00:00:00+00:00",
+                "observedAt": now.isoformat(),
+                "expiresAt": (now + timedelta(days=60)).isoformat(),
             },
         ],
         "confidence": 0.84,
@@ -552,8 +559,8 @@ def memory_os_packet(**overrides):
         "sensitivityLevel": "internal",
         "sourceTrace": {"sourceUrl": "internal://raw-source/secret", "rawText": "tenant@example.com +65 9555 1212"},
         "approvedForUse": True,
-        "createdAt": "2026-06-01T00:00:00+00:00",
-        "updatedAt": "2026-06-01T00:00:00+00:00",
+        "createdAt": now.isoformat(),
+        "updatedAt": now.isoformat(),
     }
     packet.update(overrides)
     return packet
@@ -1264,3 +1271,134 @@ def test_timeline_tab_payload_is_privacy_safe_and_admin_ui_includes_tab():
     assert tab["internal_scores_public"] is False
     ui = module.renderRentalAdminUI(leadId=tenant_id, timelineEntityType="tenant")
     assert ui["workspace_tabs"]["timeline"]["tab_title"] == "Timeline"
+
+
+def test_immutable_audit_event_insert_update_delete_and_chain_verification():
+    module = EnrichmentModule(EnrichmentStore())
+    first = module.appendImmutableAuditEvent("operator-1", "approve", {"item": "a"})
+    second = module.appendImmutableAuditEvent("operator-1", "ignore", {"item": "b"})
+    assert first["eventHash"] != second["eventHash"]
+    assert second["previousHash"] == first["eventHash"]
+    assert module.verifyAuditChain()["valid"] is True
+    try:
+        module.store.conn.execute("UPDATE immutable_audit_events SET payload='{}' WHERE id=?", (first["id"],))
+    except sqlite3.DatabaseError as exc:
+        assert "append-only" in str(exc)
+    else:
+        raise AssertionError("immutable audit update unexpectedly succeeded")
+    try:
+        module.store.conn.execute("DELETE FROM immutable_audit_events WHERE id=?", (first["id"],))
+    except sqlite3.DatabaseError as exc:
+        assert "append-only" in str(exc)
+    else:
+        raise AssertionError("immutable audit delete unexpectedly succeeded")
+
+
+def test_tampered_audit_payload_fails_chain_verification():
+    module = EnrichmentModule(EnrichmentStore())
+    event = module.appendImmutableAuditEvent("operator-1", "approve", {"item": "a"})
+    module.store.conn.execute("DROP TRIGGER immutable_audit_events_no_update")
+    module.store.conn.execute("UPDATE immutable_audit_events SET payload=? WHERE id=?", ('{"item":"tampered"}', event["id"]))
+    module.store.conn.commit()
+    assert module.verifyAuditChain()["valid"] is False
+
+
+def test_subscription_draft_idempotency_duplicate_and_retry_safe():
+    module = EnrichmentModule(EnrichmentStore())
+    kwargs = {
+        "tenantId": "tenant-sub",
+        "landlordId": "landlord-sub",
+        "propertyId": "property-sub",
+        "tenancyId": "tenancy-sub",
+        "subscriptionPeriod": "2026-07",
+        "amount": 120.0,
+        "idempotencyKey": "sub-key-1",
+    }
+    first = module.createSubscriptionDraft(**kwargs)
+    duplicate = module.createSubscriptionDraft(**kwargs)
+    assert first["id"] == duplicate["id"]
+    assert duplicate["idempotentReplay"] is True
+    failed = module.createSubscriptionDraft(**{**kwargs, "idempotencyKey": "sub-key-fail", "simulateFailure": True})
+    retry = module.createSubscriptionDraft(**{**kwargs, "idempotencyKey": "sub-key-fail"})
+    assert failed["created"] is False
+    assert retry["created"] is True
+    assert module.store.conn.execute("SELECT COUNT(*) AS c FROM subscription_drafts WHERE idempotency_key='sub-key-fail'").fetchone()["c"] == 1
+    different = module.createSubscriptionDraft(**{**kwargs, "idempotencyKey": "sub-key-2"})
+    invalid = module.createSubscriptionDraft(**{**kwargs, "idempotencyKey": "sub-key-invalid", "amount": 0})
+    assert different["id"] != first["id"]
+    assert invalid["created"] is False and invalid["status"] == "invalid"
+    assert module.store.conn.execute("SELECT COUNT(*) AS c FROM subscription_drafts WHERE idempotency_key='sub-key-invalid'").fetchone()["c"] == 0
+    concurrent_like = [module.createSubscriptionDraft(**{**kwargs, "idempotencyKey": "sub-key-concurrent"}) for _ in range(3)]
+    assert len({item["id"] for item in concurrent_like}) == 1
+
+
+def test_upload_safety_rejects_oversized_unsupported_and_infected_files():
+    module = EnrichmentModule(EnrichmentStore())
+    module.max_upload_size_bytes = 1024
+    oversized = module.submitUpload("tenant-upload", "tenant", "document", "big.pdf", "application/pdf", 2048)
+    unsupported = module.submitUpload("tenant-upload", "tenant", "document", "script.exe", "application/x-msdownload", 10)
+    infected = module.submitUpload("tenant-upload", "tenant", "document", "scan.pdf", "application/pdf", 100, virusScanProvider=FixedVirusScanProvider("infected"))
+    pending = module.submitUpload("tenant-upload", "tenant", "document", "pending.pdf", "application/pdf", 100)
+    clean = module.submitUpload("tenant-upload", "tenant", "document", "clean.pdf", "application/pdf", 100, virusScanProvider=FixedVirusScanProvider("clean"))
+    assert oversized["status"] == "rejected" and oversized["rejectionReason"] == "oversized_file"
+    assert unsupported["status"] == "rejected" and unsupported["rejectionReason"] == "unsupported_file_type"
+    assert infected["status"] == "rejected" and infected["scanStatus"] == "infected"
+    assert pending["status"] == "pending" and pending["scanStatus"] == "pending"
+    assert module.acceptUpload(infected["id"])["accepted"] is False
+    assert module.acceptUpload(pending["id"])["accepted"] is False
+    assert clean["accepted"] is True
+    assert clean["publicRawFileUrl"] is None
+
+
+def test_upload_storage_providers_support_local_and_s3_paths_without_public_url():
+    module = EnrichmentModule(EnrichmentStore())
+    local = module.submitUpload("owner-local", "tenant", "property_photo", "photo.png", "image/png", 100, storageProvider=LocalUploadStorageProvider("local://safe"))
+    s3 = module.submitUpload("owner-s3", "tenant", "property_photo", "photo.png", "image/png", 100, storageProvider=S3UploadStorageProvider("bucket", "safe-prefix"))
+    assert local["storagePath"].startswith("local://safe/owner-local/")
+    assert s3["storagePath"].startswith("s3://bucket/safe-prefix/owner-s3/")
+    assert local["publicRawFileUrl"] is None
+    assert s3["publicRawFileUrl"] is None
+
+
+def test_upload_rate_limits_and_review_flags_are_actor_scoped():
+    module = EnrichmentModule(EnrichmentStore())
+    module.max_uploads_per_actor_per_hour = 2
+    assert module.submitUpload("tenant-rate", "tenant", "document", "a.pdf", "application/pdf", 100, actorId="actor-a")["status"] == "pending"
+    assert module.submitUpload("tenant-rate", "tenant", "document", "b.pdf", "application/pdf", 100, actorId="actor-a")["status"] == "pending"
+    blocked = module.submitUpload("tenant-rate", "tenant", "document", "c.pdf", "application/pdf", 100, actorId="actor-a")
+    assert blocked["status"] == "blocked"
+    assert module.submitUpload("tenant-rate", "tenant", "document", "d.pdf", "application/pdf", 100, actorId="actor-b")["status"] == "pending"
+    module2 = EnrichmentModule(EnrichmentStore())
+    module2.max_failed_uploads_per_actor_per_hour = 2
+    module2.submitUpload("tenant-fail", "tenant", "document", "bad.exe", "application/x-msdownload", 10, actorId="actor-f")
+    module2.submitUpload("tenant-fail", "tenant", "document", "bad2.exe", "application/x-msdownload", 10, actorId="actor-f")
+    blocked_failed = module2.submitUpload("tenant-fail", "tenant", "document", "bad3.exe", "application/x-msdownload", 10, actorId="actor-f")
+    flags = module2.store.conn.execute("SELECT * FROM upload_review_flags WHERE actor_id='actor-f'").fetchall()
+    assert blocked_failed["reason"] == "too_many_failed_uploads"
+    assert flags
+
+
+def test_payment_proof_negative_cases_and_dispute_evidence_are_neutral():
+    module = EnrichmentModule(EnrichmentStore())
+    clean_payment = module.submitUpload("tenant-pay", "tenant", "payment_proof", "proof.pdf", "application/pdf", 100, virusScanProvider=FixedVirusScanProvider("clean"))
+    infected_payment = module.submitUpload("tenant-pay", "tenant", "payment_proof", "infected.pdf", "application/pdf", 100, virusScanProvider=FixedVirusScanProvider("infected"))
+    missing_invoice = module.validatePaymentProofEvidence(clean_payment["id"], 4200, 4200, "2026-06-10", requestDate="2026-06-01", dueDate="2026-06-30")
+    amount_mismatch = module.validatePaymentProofEvidence(clean_payment["id"], 4200, 4100, "2026-06-10", requestDate="2026-06-01", dueDate="2026-06-30", invoiceId="invoice-1", payer="tenant", payee="landlord")
+    too_early = module.validatePaymentProofEvidence(clean_payment["id"], 4200, 4200, "2026-05-20", requestDate="2026-06-01", dueDate="2026-06-30", invoiceId="invoice-1", payer="tenant", payee="landlord")
+    too_late = module.validatePaymentProofEvidence(clean_payment["id"], 4200, 4200, "2026-07-01", requestDate="2026-06-01", dueDate="2026-06-30", invoiceId="invoice-1", payer="tenant", payee="landlord")
+    missing_parties = module.validatePaymentProofEvidence(clean_payment["id"], 4200, 4200, "2026-06-10", requestDate="2026-06-01", dueDate="2026-06-30", invoiceId="invoice-1")
+    infected = module.validatePaymentProofEvidence(infected_payment["id"], 4200, 4200, "2026-06-10", requestDate="2026-06-01", dueDate="2026-06-30", invoiceId="invoice-1", payer="tenant", payee="landlord")
+    assert "missing_invoice_or_request" in missing_invoice["reasons"]
+    assert "amount_mismatch" in amount_mismatch["reasons"]
+    assert "payment_date_too_early" in too_early["reasons"]
+    assert "payment_date_too_late" in too_late["reasons"]
+    assert "missing_payer_payee" in missing_parties["reasons"]
+    assert "upload_not_acceptable" in infected["reasons"]
+    rejection = module.reviewLandlordRejectionAfterAcknowledgement("tenancy-pay", tenantAcknowledged=True, landlordAcknowledged=True)
+    assert rejection["status"] == "needs_review"
+    assert rejection["autoReverse"] is False
+    evidence = module.recordDisputeEvidence(clean_payment["id"], "Tenant says payment was made; landlord disagrees.")
+    assert evidence["stored"] is True
+    assert evidence["decidesWhoIsRight"] is False
+    assert evidence["threatensParty"] is False
+    assert evidence["legalAdviceGenerated"] is False

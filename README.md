@@ -576,3 +576,19 @@ The timeline API is available on `EnrichmentModule`:
 - `renderTimelineTab(entityId, entityType, filters=None, role="admin", sessionToken=None)`
 
 The Timeline tab shows only `timestamp`, `event type`, `summary`, and `source`. Supported filters are `conversations`, `tenancy`, `matching`, `verification`, and `consent`; the `tenancy` filter includes lifecycle, viewing, maintenance, and renewal timeline sources. Timeline payloads set `raw_source_trace_public=false` and `internal_scores_public=false`, and the admin UI exposes the timeline as a workspace tab rather than a new dashboard panel.
+
+### Production hardening: integrity, idempotency, and upload safety
+
+The Rental Intent Network hardening layer adds safety controls without changing matching logic, RAG behavior, messaging behavior, or funds handling. It does not auto-send messages, auto-post, auto-renew, auto-adjust rent, manage funds, or provide legal advice.
+
+Immutable audit events are persisted in `immutable_audit_events` as append-only records with `previous_hash` and `event_hash`. The event hash is calculated from the previous hash, canonical payload, and creation timestamp, and SQLite triggers reject direct update/delete attempts. `appendImmutableAuditEvent(actorId, eventType, payload)` inserts a chained audit event and `verifyAuditChain()` verifies the chain.
+
+Subscription draft creation is idempotent through `createSubscriptionDraft(...)`. The idempotency key is based on `tenantId + landlordId + propertyId + tenancyId + subscriptionPeriod` unless an explicit key is provided. Repeated calls with the same key return the existing draft; retries after a pre-persist failure do not create duplicates.
+
+Upload safety is handled by a provider abstraction. `UploadStorageProvider` has local and S3-compatible path builders (`LocalUploadStorageProvider`, `S3UploadStorageProvider`) and upload records never expose public raw file URLs by default. `VirusScanProvider` is an interface; the default `StubVirusScanProvider` leaves scans `pending` and never fakes a clean result. Operators can configure max file size, allowed MIME types, max uploads per actor per hour, and max failed uploads per actor per hour.
+
+`submitUpload(...)` stores an `UploadRecord` with owner, purpose (`verification`, `property_photo`, `payment_proof`, `maintenance`, `dispute_evidence`, or `document`), sanitized filename, MIME type, size, storage provider/path, scan status, and acceptance status. Oversized files, unsupported MIME types, infected scans, and repeated failed uploads are rejected or flagged for review. Rate limits are actor-scoped and create `upload_review_flags`; they do not auto-ban users.
+
+Payment-proof and evidence validation is intentionally negative-case oriented and recommendation-only. `validatePaymentProofEvidence(...)` can flag missing invoice/request context, amount mismatch, early/late payment dates, missing payer/payee, and unacceptable/infected uploads. `recordDisputeEvidence(...)` stores evidence for neutral human review but does not decide who is right, threaten either party, or generate legal advice.
+
+Remaining production gaps: replace the stub scanner with a real malware scanning service, configure production S3 credentials and lifecycle policies, review retention/deletion requirements, move audit storage to hardened infrastructure if needed, and perform security/legal review before launch.

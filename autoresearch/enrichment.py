@@ -37,6 +37,14 @@ from .enrichment_types import (
     build_search_provider,
 )
 from .person_verification import PersonVerificationMixin
+from .production_hardening import (
+    DEFAULT_ALLOWED_MIME_TYPES,
+    LocalUploadStorageProvider,
+    ProductionHardeningMixin,
+    S3UploadStorageProvider,
+    StubVirusScanProvider,
+    FixedVirusScanProvider,
+)
 from .real_estate_memory_os import GovernedMemoryPacketInput, RealEstateRagAdapter, Signal
 from .rental_intake import RentalIntakeMixin
 from .rental_lifecycle import LIFECYCLE_STAGES, LIFECYCLE_TRIGGERS, RentalLifecycleMixin
@@ -48,6 +56,7 @@ class EnrichmentModule(
     AuthRbacMixin,
     ConversationRuntimeMixin,
     MemoryTimelineMixin,
+    ProductionHardeningMixin,
     EnrichmentAdminUIMixin,
     ConsentPrivacyMixin,
     PersonVerificationMixin,
@@ -167,17 +176,22 @@ __all__ = [
     "CONSENT_POLICY",
     "CONSENT_TYPES",
     "DuckDuckGoSearchProvider",
+    "DEFAULT_ALLOWED_MIME_TYPES",
     "ENTITY_TYPES",
     "EnrichmentEntity",
     "EnrichmentModule",
     "EnrichmentStore",
     "ExaSearchProvider",
     "GovernedMemoryPacketInput",
+    "FixedVirusScanProvider",
     "GTM_SIGNAL_TYPES",
     "IMPORT_TEMPLATES",
     "IMPORT_TIMING_STATES",
     "LIFECYCLE_STAGES",
     "LIFECYCLE_TRIGGERS",
+    "LocalUploadStorageProvider",
+    "S3UploadStorageProvider",
+    "StubVirusScanProvider",
     "TIMELINE_FILTERS",
     "VERIFICATION_SIGNAL_TYPES",
     "RENTAL_SIGNAL_TYPES",
