@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime, timedelta, timezone
 
 from autoresearch.enrichment import (
     ENTITY_TYPES,
@@ -29,7 +30,7 @@ class CompanyEnrichmentModule(EnrichmentModule):
         return {
             "source_url": url,
             "raw_text": '{"signals":[{"signal_type":"hiring_signal","content":"Growing AE headcount."},{"signal_type":"product_launch","content":"Launched AI copilot."}]}',
-            "fetched_at": "2026-05-20T00:00:00+00:00",
+            "fetched_at": datetime.now(timezone.utc).isoformat(),
         }
 
 
@@ -38,7 +39,7 @@ class TenantEnrichmentModule(EnrichmentModule):
         return {
             "source_url": url,
             "raw_text": "Moving to Singapore in August. Budget S$4k-S$5k. Looking for 2BR condo near MRT in Tanjong Pagar. Family of 3, no pets, 12 months lease. Contact me at tenant@example.com or +65 9123 4567.",
-            "fetched_at": "2026-05-20T00:00:00+00:00",
+            "fetched_at": datetime.now(timezone.utc).isoformat(),
         }
 
 
@@ -47,7 +48,7 @@ class PropertyEnrichmentModule(EnrichmentModule):
         return {
             "source_url": url,
             "raw_text": "Owner renting 1BR condo in Tanjong Pagar. Rent S$4.2k, available July, fully furnished. Viewing this weekend. Prefer professionals. Address 123 Example Road.",
-            "fetched_at": "2026-05-20T00:00:00+00:00",
+            "fetched_at": datetime.now(timezone.utc).isoformat(),
         }
 
 
@@ -524,6 +525,7 @@ def test_approved_rag_intake_marks_memory_as_approved_before_matching():
 
 
 def memory_os_packet(**overrides):
+    now = datetime.now(timezone.utc)
     packet = {
         "packetId": "packet-1",
         "entityId": "tenant-123",
@@ -537,8 +539,8 @@ def memory_os_packet(**overrides):
                 "freshness": 0.9,
                 "verificationStatus": "verified",
                 "sourceType": "manual_import",
-                "observedAt": "2026-06-01T00:00:00+00:00",
-                "expiresAt": "2026-08-01T00:00:00+00:00",
+                "observedAt": now.isoformat(),
+                "expiresAt": (now + timedelta(days=60)).isoformat(),
             },
             {
                 "signalType": "viewing_intent",
@@ -547,8 +549,8 @@ def memory_os_packet(**overrides):
                 "freshness": 0.9,
                 "verificationStatus": "verified",
                 "sourceType": "manual_import",
-                "observedAt": "2026-06-01T00:00:00+00:00",
-                "expiresAt": "2026-08-01T00:00:00+00:00",
+                "observedAt": now.isoformat(),
+                "expiresAt": (now + timedelta(days=60)).isoformat(),
             },
         ],
         "confidence": 0.84,
@@ -557,8 +559,8 @@ def memory_os_packet(**overrides):
         "sensitivityLevel": "internal",
         "sourceTrace": {"sourceUrl": "internal://raw-source/secret", "rawText": "tenant@example.com +65 9555 1212"},
         "approvedForUse": True,
-        "createdAt": "2026-06-01T00:00:00+00:00",
-        "updatedAt": "2026-06-01T00:00:00+00:00",
+        "createdAt": now.isoformat(),
+        "updatedAt": now.isoformat(),
     }
     packet.update(overrides)
     return packet
